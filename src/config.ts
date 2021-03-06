@@ -1,7 +1,7 @@
 export const API_URL =
   process.env.NODE_ENV === 'production'
     ? 'https://api.onetaphello.com'
-    : 'http://localhost:3000'
+    : 'https://api.onetaphello.com'
 
 export const STRIPE_PUBLISHABLE_KEY =
   process.env.NODE_ENV === 'production'
