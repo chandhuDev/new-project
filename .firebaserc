@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "onetaphello-c7766"
+  },
+  "targets": {
+    "onetaphello-c7766": {
+      "hosting": {
+        "onetaphello-landing": [
+          "onetaphello-landing"
+        ]
+      }
+    }
+  }
+}

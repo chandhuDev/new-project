@@ -1,0 +1,17 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "V8UZ5P69JS.com.onetaphello"
+        ],
+        "components": [
+          {
+            "/": "/profile/*",
+            "comment": "Matches any URL whose path starts with /profile/"
+          }
+        ]
+      }
+    ]
+  }
+}
