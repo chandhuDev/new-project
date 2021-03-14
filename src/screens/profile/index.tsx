@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, useMemo } from 'react'
+import React, { FC, useState, useEffect, useMemo,ImageSourcePropType } from 'react'
 import { RouteComponentProps } from '@reach/router'
 import { observer } from 'mobx-react'
 import { theme } from '~/styles'
@@ -76,6 +76,31 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
     freelancer:'https://www.freelancer.in/u/',
     calendly:'https://calendly.com/',
   }
+
+   const IDENTITY_ICONS: Record<
+  keyof Required<User>['identities'],
+  ImageSourcePropType
+> = {
+  facebook: require('../../images/identities/facebook.png'),
+  instagram: require('../../images/identities/instagram.png'),
+  twitter: require('../../images/identities/twitter.png'),
+  telegram: require('../../images/identities/telegram.png'),
+  appleMusic: require('../../images/identities/apple_Music.png'),
+  linkedin: require('../../images/identities/linkedin.png'),
+  paypal: require('../../images/identities/paypal.png'),
+  pinterest: require('../../images/identities/pinterest.png'),
+  snapchat: require('../../images/identities/snapchat.png'),
+  spotify: require('../../images/identities/spotify.png'),
+  tiktok: require('../../images/identities/tiktok.png'),
+  twitch: require('../../images/identities/twitch.png'),
+  whatsapp: require('../../images/identities/whatsapp.png'),
+  youtube: require('../../images/identities/youtube.png'),
+  googlepay: require('../../images/identities/googlepay.png'),
+  paytm: require('../../images/identities/paytm.png'),
+  phonepe: require('../../images/identities/phonepe.png'),
+  freelancer: require('../../images/identities/freelancer.png'),
+  calendly:require('../../images/identities/calendly.png'),
+}
   return (
     <main css={[styles.container]}>
       <section css={styles.content}>
@@ -114,7 +139,12 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
                 // console.log(SOCIAL_LINKS[type]+'/'+value,type)
                 <div css={styles.socialItem}>
                   {/* <label>{type}</label><br /> */}
-                  <a href={SOCIAL_LINKS[type]+'/'+value}>{type}</a>
+                  <a href={SOCIAL_LINKS[type]+'/'+value} target="_blank">
+                  <img
+                    src={IDENTITY_ICONS[type]}
+                    css={styles.socialIcon}
+                  />
+                  </a>
                 </div>
               )
             )

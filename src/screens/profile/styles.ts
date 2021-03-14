@@ -93,5 +93,9 @@ export const styles = {
     display: flex;
     justify-content: center;
     margin-bottom:15px;
+  `,
+  socialIcon:css`
+  height:50px;
+  width:50px;
   `
 }
