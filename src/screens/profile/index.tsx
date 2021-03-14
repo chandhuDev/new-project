@@ -73,6 +73,19 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
   return (
     <main css={[styles.container]}>
       <section css={styles.content}>
+        <div>
+          <img
+          src={user?.contacts?.avatarUrl}
+          />
+        </div>
+      <div>
+        <label>Taps</label>
+        <label>{user?.tapsCount}</label>
+      </div>
+      <div>
+        <label>Views</label>
+        <label>{user?.shareCount}</label>
+      </div>
       {CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
         <div>
           <label>{item.key}</label><br/>
