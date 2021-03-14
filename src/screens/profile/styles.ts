@@ -31,8 +31,8 @@ export const styles = {
   avatar: css`
     margin-Top: -50px;
     margin-Bottom: 10px;
-    width:300px;
-    height:300px;
+    width:120px;
+    height:120px;
     border-radius:50%;
     border:5px solid #fff;
   `,
@@ -41,25 +41,25 @@ export const styles = {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-top:-100px;
+    margin-top:-50px;
   `,
   countContainer:css`
     display: flex;
     justify-content:space-between;
     width: 100%;
-    margin-top:-150px;
+    margin-top:-50px;
   `,
   countContainerBx:css`
-      width:50%;
+      width:20%;
       text-align:center;
   `,
   ccHeader:css`
-    font-size:18px;
+    font-size:16px;
     color:#2858c6;
     font-weight:700;
   `,
   ccValue:css`
-  font-size:18px;
+  font-size:14px;
   font-weight:700;
   margin-left:5px;
   color:gray;
@@ -78,7 +78,7 @@ export const styles = {
     width:94%;
   `,
   infoBox:css`
-    margin-top:150px;
+    margin-top:50px;
   `,
   infoItem:css`
       color:red;
