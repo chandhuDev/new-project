@@ -28,4 +28,70 @@ export const styles = {
     border-top-right-radius: 16px;
     border-top-left-radius: 16px;
   `,
+  avatar: css`
+    margin-Top: -50px;
+    margin-Bottom: 10px;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    border:5px solid #fff;
+  `,
+  headerContainer: css`
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top:-100px;
+  `,
+  countContainer:css`
+    display: flex;
+    justify-content:space-between;
+    width: 100%;
+    margin-top:-150px;
+  `,
+  countContainerBx:css`
+      width:50%;
+      text-align:center;
+  `,
+  ccHeader:css`
+    font-size:18px;
+    color:#2858c6;
+    font-weight:700;
+  `,
+  ccValue:css`
+  font-size:18px;
+  font-weight:700;
+  margin-left:5px;
+  color:gray;
+  `,
+  itemLabel:css`
+      font-size:10;
+      color:rgb(35, 90, 203);
+      text-transform: capitalize;
+  `,
+  itemValue:css`
+    font-size: 14px;
+    color:#2f3542;
+    font-weight:500;
+    margin-top:5px;
+    opacity: 0.95;
+    width:94%;
+  `,
+  infoBox:css`
+    margin-top:150px;
+  `,
+  infoItem:css`
+      color:red;
+  `,
+  socialBox:css`
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+  `,
+  socialItem:css`
+    width:25%;
+    display: flex;
+    justify-content: center;
+    margin-bottom:15px;
+  `
 }
