@@ -11,6 +11,7 @@ export const App: FC = () => (
     <Global styles={global} />
 
     <Suspense fallback={<Spinner />}>
+      
       <Router>
         <PaymentScreen path="/payment" />
         <ProfileScreen path="/profile/:profile/:id" />
