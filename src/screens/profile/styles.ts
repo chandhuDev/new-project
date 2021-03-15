@@ -1,12 +1,11 @@
 import { css } from '@emotion/core'
+import { Children } from 'react'
 
 export const styles = {
   container: css`
     min-height: 100vh;
-
     padding: 125px 10px 0 10px;
     box-sizing: border-box;
-
     background: rgb(24, 44, 97);
     background: linear-gradient(
       180deg,
@@ -21,12 +20,13 @@ export const styles = {
 
   content: css`
     height: 100%;
-
     background-color: #ffffff;
     padding: 30px;
-
     border-top-right-radius: 16px;
     border-top-left-radius: 16px;
+    z-index: 3;
+    position: relative;
+    margin-top: -150px;
   `,
   avatar: css`
     margin-Top: -50px;
@@ -95,7 +95,21 @@ export const styles = {
     margin-bottom:15px;
   `,
   socialIcon:css`
-  height:50px;
-  width:50px;
-  `
+    height:50px;
+    width:50px;
+  `,
+  headerBxContainer:css`
+    position:relative;
+    height:230px;
+    margin:0 -10px;
+  `,
+  bottonBg:css`
+    width:100%;
+    position:absolute;
+    bottom:0;
+  `,
+  gradientBg:css`      
+    position: relative;
+    width: 100%;
+  `,
 }
