@@ -6,3 +6,6 @@ export const PaymentScreen = lazy(() =>
 export const ProfileScreen = lazy(() =>
   import('./profile').then(({ ProfileScreen }) => ({ default: ProfileScreen })),
 )
+export const FinishScreen = lazy(() =>
+  import('./finish').then(({ FinishScreen }) => ({ default: FinishScreen })),
+)

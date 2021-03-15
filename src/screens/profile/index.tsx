@@ -47,6 +47,9 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
     key: keyof Required<User>['contacts']
     link?: boolean
   }> = [
+    
+    { key: 'name' },
+    { key: 'bio' },
     { key: 'phone' },
     { key: 'email' },
     { key: 'website', link: true },
@@ -107,6 +110,10 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
         <div css={styles.headerContainer}>
           <img
             src={user?.contacts?.avatarUrl}
+            css={[styles.avatar]}
+          />
+          <img
+            src={user?.contacts?.coverUrl}
             css={[styles.avatar]}
           />
           <div css={styles.countContainer}>
