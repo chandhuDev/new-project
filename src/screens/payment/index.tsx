@@ -177,7 +177,7 @@ const vet=()=>{
               onSubmit={(formData: PaymentFormData) => {
                 setShippingFormData(formData)
 
-                return purchase()
+                 purchase()
               }}
               submitButtonDisabled={!cardFormFilled || store.loading}
               error={store.savingTransactionError}
