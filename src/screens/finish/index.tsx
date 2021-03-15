@@ -19,7 +19,7 @@ export const FinishScreen: FC<RouteComponentProps> = observer(({ navigate }) => 
   const [id,setID] = useState('')
   const [loading,setLoading] = useState(false)
   const [error, setError] = useState('')
-  
+  const [userStatus,setUserStatus]=useState(false)
   // use shipping info for billing when checkbox checked
   useEffect(() => {
     // var location = window.location.pathname.split("/")
@@ -28,7 +28,13 @@ export const FinishScreen: FC<RouteComponentProps> = observer(({ navigate }) => 
     //   getUser(location[3]);
 
     // }
+    userData()
+   
+   // console.log('hwlloq');
   }, [])
+  const userData=()=>{
+      setUserStatus(true);
+  }
   const getUser = (id:string) =>{
     // setLoading(true)
     // apiRequest(`/users/get-user-shared-profile/${id}`,{
@@ -116,7 +122,9 @@ export const FinishScreen: FC<RouteComponentProps> = observer(({ navigate }) => 
             </div> */}
             <div css={styles.countContainerBx}>
               {/* <label css={styles.ccHeader}>{user?.shareCount}</label> */}
-              <label css={styles.ccValue}>Views</label>
+              <label css={styles.ccValue}>
+                  {userStatus==true? <div>Thank You</div>:null}
+              </label>
             </div>
           </div>
         </div>

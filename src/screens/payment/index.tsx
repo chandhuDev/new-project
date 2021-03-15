@@ -1,7 +1,7 @@
 import React, { FC, useState, useEffect, useMemo } from 'react'
 import { RouteComponentProps } from '@reach/router'
 import qs from 'querystring'
-import { Truck, CreditCard } from 'react-feather'
+import { Truck, CreditCard, Navigation } from 'react-feather'
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe, StripeCardElementOptions } from '@stripe/stripe-js'
 import { observer } from 'mobx-react'
@@ -72,7 +72,7 @@ export const PaymentScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
 
       // if payment is succeeded, save transaction details to the database through the API
       if (paymentResult.paymentIntent?.status === 'succeeded') {
-        console.log("payment done");
+      //  console.log("payment done");
         await fetch(`${API_URL}/payment/transactions`, {
           method: 'POST',
           headers: {
@@ -88,6 +88,7 @@ export const PaymentScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
 
         // navigate to '/payment/finish' after saving transaction info
         navigate?.('/finish')
+        //Navigation.
       }
     } catch (error) {
       // TODO: return payment
