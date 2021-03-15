@@ -106,14 +106,14 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
 }
   return (
     <main css={[styles.container]}>
+        <div css={styles.headerBxContainer}>
+          <img src={user?.contacts?.coverUrl} css={styles.bottonBg} />
+          <img src={require('../../images/gradient.png')} alt="Gradient Image" css={styles.gradientBg} />
+        </div>
       <section css={styles.content}>
         <div css={styles.headerContainer}>
           <img
             src={user?.contacts?.avatarUrl}
-            css={[styles.avatar]}
-          />
-          <img
-            src={user?.contacts?.coverUrl}
             css={[styles.avatar]}
           />
           <div css={styles.countContainer}>
