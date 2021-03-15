@@ -9,7 +9,7 @@ import { observer } from 'mobx-react'
 import { PaymentFormData } from '~/types'
 import { STRIPE_PUBLISHABLE_KEY, API_URL } from '~/config'
 import { theme } from '~/styles'
-import { Header, Separator, Form, Checkbox, CheckoutForm } from './components'
+import { Header, Separator, Form, Checkbox, CheckoutForm,ThankYou } from './components'
 import { PaymentStore } from './store'
 import { styles } from './styles'
 
@@ -30,7 +30,7 @@ const emptyPaymentForm: PaymentFormData = {
 const stripePromise = loadStripe(STRIPE_PUBLISHABLE_KEY)
 
 export const PaymentScreen: FC<RouteComponentProps> = observer(({ navigate }) => {
-  const [screen, setScreen] = useState<'shipping' | 'billing'>('shipping')
+  const [screen, setScreen] = useState<'shipping' | 'billing' | 'thank-you'>('shipping')
   const [loading, setLoading] = useState(false)
 
   // parse auth token from query string
@@ -87,7 +87,8 @@ export const PaymentScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
         })
 
         // navigate to '/payment/finish' after saving transaction info
-        navigate?.('/finish')
+        setScreen('thank-you')
+       // navigate?.('/finish')
         //Navigation.
       }
     } catch (error) {
@@ -99,15 +100,28 @@ export const PaymentScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
   }
 
   return (
+    
     <main css={[styles.container, screen === 'billing' && styles.containerBilling]}>
       <section css={styles.content}>
-        <Header
+        
+        {
+          screen==='thank-you'?null: 
+          (<Header
           Icon={screen === 'shipping' ? Truck : CreditCard}
           title={screen === 'shipping' ? 'Order details' : 'Billing'}
-        />
+        />)
+        }
+         {/* <Header
+        //   Icon={screen === 'shipping' ? Truck : CreditCard}
+        //   title={screen === 'shipping' ? 'Order details' : 'Billing'}
+        // /> */}
 
         <Separator />
-
+        {/* {
+          screen==='thank-you'?(
+            <ThankYou/>
+          ):null
+        } */}
         {screen === 'shipping' ? (
           <Form
             type="shipping"
@@ -122,7 +136,11 @@ export const PaymentScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
             }}
             renderPhoneInput={!token}
           />
-        ) : (
+        ) : 
+        screen==='thank-you'?
+        <ThankYou/>
+        :
+          (
           <>
             <Elements stripe={stripePromise}>
               <CheckoutForm
