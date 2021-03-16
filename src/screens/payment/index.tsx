@@ -115,7 +115,7 @@ export const PaymentScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
       // </script>
         // navigate to '/payment/finish' after saving transaction info
      //   setScreen('thank-you')
-        navigate?.('/finish')
+        navigate?.('payment/finish')
         //Navigation.
       }
     } catch (error) {
