@@ -5,9 +5,10 @@ import { theme } from '~/styles'
 import { styles } from './styles'
 import { apiRequest } from '../../api-request'
 import { SerializedStyles } from '@emotion/core'
-
 import { User } from '~/types'
 
+
+import { Router, Redirect,Link } from '@reach/router'
 interface RouteComponentProps {
   text: string
   styles?: SerializedStyles
@@ -127,6 +128,12 @@ export const FinishScreen: FC<RouteComponentProps> = observer(({ navigate }) => 
               </label>
             </div>
           </div>
+          <Link to="https://landing.onetaphello.com/profile/" className="btn btn-primary">go to App</Link>
+          <button onClick={() => window.open( 'http://www.google.com')} >google</button>
+          <a href="https://www.google.com/"><button>Visit App</button></a>
+          <a href="https://landing.onetaphello.com/profile/"><button>Visit App2</button></a>
+
+
         </div>
        
         <div css={styles.socialBox}>

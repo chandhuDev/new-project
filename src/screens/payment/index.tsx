@@ -89,13 +89,13 @@ export const PaymentScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
           console.log("response",response);
         })
 
-        vet()
+       // vet()
       //   <script>
       //   window.postMessage("Sending data from WebView");
       // </script>
         // navigate to '/payment/finish' after saving transaction info
      //   setScreen('thank-you')
-       // navigate?.('/finish')
+        navigate?.('/finish')
         //Navigation.
       }
     } catch (error) {
@@ -105,13 +105,13 @@ export const PaymentScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
       setLoading(false)
     }
   }
-const vet=()=>{
-  <script>
-    alert('aa');
-  window.postMessage("Sending data from WebView");
-</script>
- setScreen('thank-you')
-}
+// const vet=()=>{
+//   <script>
+//     alert('aa');
+//   window.postMessage("Sending data from WebView");
+// </script>
+//  setScreen('thank-you')
+// }
   return (
     
     <main css={[styles.container, screen === 'billing' && styles.containerBilling]}>
