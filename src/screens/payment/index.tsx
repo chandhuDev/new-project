@@ -12,6 +12,7 @@ import { theme } from '~/styles'
 import { Header, Separator, Form, Checkbox, CheckoutForm,ThankYou } from './components'
 import { PaymentStore } from './store'
 import { styles } from './styles'
+import { User } from '~/types'
 
 const emptyPaymentForm: PaymentFormData = {
   firstName: '',
@@ -32,6 +33,8 @@ const stripePromise = loadStripe(STRIPE_PUBLISHABLE_KEY)
 export const PaymentScreen: FC<RouteComponentProps> = observer(({ navigate }) => {
   const [screen, setScreen] = useState<'shipping' | 'billing' | 'thank-you'>('shipping')
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+  const [user,setUser] = useState<User | undefined>(undefined)
 
   // parse auth token from query string
   const token = useMemo(
@@ -85,10 +88,27 @@ export const PaymentScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
             billingInfo: billingFormData,
             timestamp: Date.now(),
           }),
-        }).then((response)=>{
-          console.log("response",response);
         })
 
+        await fetch(`${API_URL}/users`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: token,
+          },
+          // body: JSON.stringify({
+          //   shippingInfo: shippingFormData,
+          //   billingInfo: billingFormData,
+          //   timestamp: Date.now(),
+          // }),
+        }).then((resp) => {
+          setUser(resp)
+          console.log(resp)
+        })
+        .catch((error) =>{ 
+          setError(error.message)
+        })
+        //Asyn
        // vet()
       //   <script>
       //   window.postMessage("Sending data from WebView");

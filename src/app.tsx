@@ -17,7 +17,12 @@ export const App: FC = () => (
         <FinishScreen path="/finish" />
         <ProfileScreen path="/profile/:profile/:id" />
         <Redirect from="*" to="/payment" noThrow />
+        
       </Router>
+      {/* <Router path='/privacy-policy' component={() => { 
+     window.location.href = 'https://example.com/1234'; 
+     return null;
+      }}/> */}
     </Suspense>
   </>
 )
