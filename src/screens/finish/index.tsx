@@ -108,6 +108,10 @@ export const FinishScreen: FC<RouteComponentProps> = observer(({ navigate }) => 
 //   freelancer: require('../../images/identities/freelancer.png'),
 //   calendly:require('../../images/identities/calendly.png'),
 // }
+
+const paymentFinished = () => {
+  window.ReactNativeWebView.postMessage('PaymentFinished');
+}
   return (
     <main css={[styles.container]}>
       <section css={styles.content}>
@@ -133,6 +137,7 @@ export const FinishScreen: FC<RouteComponentProps> = observer(({ navigate }) => 
           <a href="https://www.google.com/"><button>Visit App</button></a>
           <a href="https://landing.onetaphello.com/profile/"><button>Visit App2</button></a>
 
+          <button onClick={() => paymentFinished()}>Alert me</button>
 
         </div>
        
