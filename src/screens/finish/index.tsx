@@ -110,6 +110,7 @@ export const FinishScreen: FC<RouteComponentProps> = observer(({ navigate }) => 
 // }
 
 const paymentFinished = () => {
+ // alert('a');
   window.ReactNativeWebView.postMessage('PaymentFinished');
 }
   return (
@@ -136,9 +137,9 @@ const paymentFinished = () => {
           <button onClick={() => window.open( 'https://landing.onetaphello.com/profile/')} >google</button>
           <a href="https://www.google.com/"><button>Visit App</button></a>
           <a href="https://landing.onetaphello.com/profile/"><button>Visit App2</button></a>
-          <a href="javascript:void(0)" onClick={() => paymentFinished()}>Alert me</a>    
-         {/* <a> <button onClick={() => paymentFinished()}>Alert me</button>
-            </a> */}
+          <a href="javascript:void(0)" onClick={() => paymentFinished()}>Aert me</a>    
+         <a> <button onClick={() => paymentFinished()}>Alert me</button>
+            </a>
         </div>
        
         <div css={styles.socialBox}>
