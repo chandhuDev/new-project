@@ -27,5 +27,7 @@ export const styles = {
 
     border-top-right-radius: 16px;
     border-top-left-radius: 16px;
+    width:300px;
+    margin:0 auto;
   `,
 }

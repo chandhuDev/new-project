@@ -26,7 +26,8 @@ export const styles = {
     border-top-left-radius: 16px;
     z-index: 3;
     position: relative;
-    margin-top: -150px;
+    width:300px;
+    margin: -150px auto 0;
   `,
   avatar: css`
     margin-Top: -50px;
