@@ -29,6 +29,9 @@ export const styles = {
     justify-content: center;
     align-items: center;
     display: flex;
+    width: 320px;
+    margin: 0 auto;
+    text-align: center;
   `,
   avatar: css`
     margin-Top: -50px;
@@ -107,6 +110,7 @@ export const styles = {
   font-weight: 500;
   margin-top: 5px;
   opacity: 0.95;
+  line-height: 24px;
   `,
   button:css`
   background: none;
