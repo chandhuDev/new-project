@@ -114,6 +114,7 @@ export const styles = {
   gradientBg:css`      
     position: relative;
     width: 100%;
+    margin-top: 80px;
   `,
   profileNameHeader:css`
       position:relative;
