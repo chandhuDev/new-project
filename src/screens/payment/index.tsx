@@ -167,7 +167,7 @@ export const PaymentScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
               setShippingFormData(formData)
               setScreen('billing')
             }}
-            renderPhoneInput={!token}
+          //  renderPhoneInput={!token}
           />
         ) : 
         screen==='thank-you'?
