@@ -104,7 +104,7 @@ export const Form: FC<FormProps> = ({
             trigger={trigger}
           />
 
-          {renderPhoneInput && (
+          {/* {renderPhoneInput && (
             <FormItem
               name="phone"
               registerRef={register({ required: true })}
@@ -114,7 +114,18 @@ export const Form: FC<FormProps> = ({
               trigger={trigger}
               isPhoneNumber
             />
-          )}
+          )} */}
+              
+            <FormItem
+              name="phone"
+              registerRef={register({ required: true })}
+              label="Phone number"
+              placeholder="Your phone..."
+              error={Boolean(errors.phone)}
+              trigger={trigger}
+              isPhoneNumber
+            />
+          
         </div>
       )}
 
