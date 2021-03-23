@@ -50,64 +50,7 @@ export const FinishScreen: FC<RouteComponentProps> = observer(({ navigate }) => 
     // .finally(() => setLoading(false))
   }
 
-//   const CONTACT_ITEMS: Array<{
-//     key: keyof Required<User>['contacts']
-//     link?: boolean
-//   }> = [
-//     { key: 'phone' },
-//     { key: 'email' },
-//     { key: 'website', link: true },
-//     { key: 'company' },
-//     { key: 'position' },
-//     { key: 'location' },
-//   ]
-//   const SOCIAL_LINKS: Record<keyof User['identities'], any> = {
-//     telegram: 'https://t.me',
-//     twitter: 'https://twitter.com',
-//     // facebook: 'https://facebook.com',
-//     facebook: 'fb://page/',
-//     instagram: 'https://instagram.com',
-//     linkedin: 'https://linkedin.com/in',
-//     pinterest: 'https://pinterest.com',
-//     twitch: 'https://twitch.tv',
-//     youtube: 'https://youtube.com/c',
-//     spotify: 'https://open.spotify.com/user',
-//     snapchat: 'https://snapchat.com/add',
-//     tiktok: 'https://vm.tiktok.com/',
-//     paypal: 'https://paypal.me',
-//     whatsapp: 'https://wa.me',
-//     appleMusic: 'https://music.apple.com',
-//     googlepay: 'https://pay.google.com?phone=',
-//     phonepe:'upi://pay?pa=',
-//     paytm:'paytmmp://',
-//     freelancer:'https://www.freelancer.in/u/',
-//     calendly:'https://calendly.com/',
-//   }
-
-//    const IDENTITY_ICONS: Record<
-//   keyof Required<User>['identities'],
-//   ImageSourcePropType
-// > = {
-//   facebook: require('../../images/identities/facebook.png'),
-//   instagram: require('../../images/identities/instagram.png'),
-//   twitter: require('../../images/identities/twitter.png'),
-//   telegram: require('../../images/identities/telegram.png'),
-//   appleMusic: require('../../images/identities/apple_Music.png'),
-//   linkedin: require('../../images/identities/linkedin.png'),
-//   paypal: require('../../images/identities/paypal.png'),
-//   pinterest: require('../../images/identities/pinterest.png'),
-//   snapchat: require('../../images/identities/snapchat.png'),
-//   spotify: require('../../images/identities/spotify.png'),
-//   tiktok: require('../../images/identities/tiktok.png'),
-//   twitch: require('../../images/identities/twitch.png'),
-//   whatsapp: require('../../images/identities/whatsapp.png'),
-//   youtube: require('../../images/identities/youtube.png'),
-//   googlepay: require('../../images/identities/googlepay.png'),
-//   paytm: require('../../images/identities/paytm.png'),
-//   phonepe: require('../../images/identities/phonepe.png'),
-//   freelancer: require('../../images/identities/freelancer.png'),
-//   calendly:require('../../images/identities/calendly.png'),
-// }
+  
   return (
     <main css={[styles.container]}>
       <section css={styles.content}>
