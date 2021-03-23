@@ -124,14 +124,14 @@ export const FinishScreen: FC<RouteComponentProps> = observer(({ navigate }) => 
             <div css={styles.countContainerBx}>
               {/* <label css={styles.ccHeader}>{user?.shareCount}</label> */}
               <label css={styles.ccValue}>
-                  {userStatus==true? <div>Thank You</div>:null}
+                  {userStatus==true? <div>Thank You for registering </div>:null}
               </label>
             </div>
           </div>
-          <Link to="https://landing.onetaphello.com/profile/" className="btn btn-primary">go to App</Link>
+          {/* <Link to="https://landing.onetaphello.com/profile/" className="btn btn-primary">go to App</Link>
           <button onClick={() => window.open( 'https://landing.onetaphello.com/profile/')} >google</button>
           <a href="https://www.google.com/"><button>Visit App</button></a>
-          <a href="https://landing.onetaphello.com/profile/"><button>Visit App2</button></a>
+          <a href="https://landing.onetaphello.com/profile/"><button>Visit App2</button></a> */}
           <button onClick={() => window.ReactNativeWebView.postMessage("PaymentFinished")}>Payment Finished</button>
 
         </div>
