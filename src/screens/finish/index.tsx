@@ -108,11 +108,6 @@ export const FinishScreen: FC<RouteComponentProps> = observer(({ navigate }) => 
 //   freelancer: require('../../images/identities/freelancer.png'),
 //   calendly:require('../../images/identities/calendly.png'),
 // }
-
-const paymentFinished = () => {
- // alert('a');
-  window.ReactNativeWebView.postMessage('PaymentFinished');
-}
   return (
     <main css={[styles.container]}>
       <section css={styles.content}>
@@ -137,9 +132,8 @@ const paymentFinished = () => {
           <button onClick={() => window.open( 'https://landing.onetaphello.com/profile/')} >google</button>
           <a href="https://www.google.com/"><button>Visit App</button></a>
           <a href="https://landing.onetaphello.com/profile/"><button>Visit App2</button></a>
-          <a href="javascript:void(0)" onClick={() => paymentFinished()}>Aert me</a>    
-         <a> <button onClick={() => paymentFinished()}>Click</button>
-            </a>
+          <button onClick={() => window.ReactNativeWebView.postMessage("PaymentFinished")}>Payment Finished</button>
+
         </div>
        
         <div css={styles.socialBox}>
