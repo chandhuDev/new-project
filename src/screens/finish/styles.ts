@@ -21,12 +21,14 @@ export const styles = {
 
   content: css`
     height: 100%;
-
     background-color: #ffffff;
     padding: 30px;
-
     border-top-right-radius: 16px;
     border-top-left-radius: 16px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
   `,
   avatar: css`
     margin-Top: -50px;
@@ -97,5 +99,19 @@ export const styles = {
   socialIcon:css`
   height:50px;
   width:50px;
+  `,
+  heading:css`
+  margin-bottom:15px;
+  font-size: 16px;
+  color: #2f3542;
+  font-weight: 500;
+  margin-top: 5px;
+  opacity: 0.95;
+  `,
+  button:css`
+  background: none;
+    border: none;
+    color:#2858c6;
+    padding:10px;
   `
 }

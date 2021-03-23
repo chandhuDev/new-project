@@ -54,51 +54,12 @@ export const FinishScreen: FC<RouteComponentProps> = observer(({ navigate }) => 
   return (
     <main css={[styles.container]}>
       <section css={styles.content}>
-        <div css={styles.headerContainer}>
-          {/* <img
-            src={user?.contacts?.avatarUrl}
-            css={[styles.avatar]}
-          /> */}
-          <div css={styles.countContainer}>
-            {/* <div css={styles.countContainerBx}>
-              <label css={styles.ccHeader}>{user?.tapsCount}</label>
-              <label css={styles.ccValue}>Taps</label>
-            </div> */}
-            <div css={styles.countContainerBx}>
-              {/* <label css={styles.ccHeader}>{user?.shareCount}</label> */}
-              <label css={styles.ccValue}>
-                  {userStatus==true? <div>Thank You for registering on One Tap Hellow</div>:null}
-              </label>
-            </div>
-          </div>
+          {userStatus==true? <div css={styles.heading}>Thank You for registering on OneTapHello</div>:null}
+          <button  css={styles.button} onClick={() => window.ReactNativeWebView.postMessage("PaymentFinished")}>Go to App</button>
           {/* <Link to="https://landing.onetaphello.com/profile/" className="btn btn-primary">go to App</Link>
           <button onClick={() => window.open( 'https://landing.onetaphello.com/profile/')} >google</button>
           <a href="https://www.google.com/"><button>Visit App</button></a>
           <a href="https://landing.onetaphello.com/profile/"><button>Visit App2</button></a> */}
-          <button onClick={() => window.ReactNativeWebView.postMessage("PaymentFinished")}>Profile</button>
-
-        </div>
-       
-        <div css={styles.socialBox}>
-        {
-        //   Object.entries(user?.identities || {})
-        //     .filter(([_, value]) => Boolean(value))
-        //       .map(([type, value]) => (
-        //         user?.hideIdentities[type] ? null : 
-        //         // console.log(SOCIAL_LINKS[type]+'/'+value,type)
-        //         <div css={styles.socialItem}>
-        //           {/* <label>{type}</label><br /> */}
-        //           <a href={SOCIAL_LINKS[type]+'/'+value} target="_blank">
-        //           <img
-        //             src={IDENTITY_ICONS[type]}
-        //             css={styles.socialIcon}
-        //           />
-        //           </a>
-        //         </div>
-        //       )
-        //     )
-          }
-        </div>
       </section>
     </main>
     );
