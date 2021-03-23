@@ -127,34 +127,25 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
             </div>
           </div>
         </div>
-        <div css={styles.infoBox}>
-        {
-          CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
-            (item.key=='name')?
-              <div css={styles.infoItem}>
-                <label css={styles.itemLabel}>{item.key}</label><br/>
-                <label css={styles.itemValue}>{user!.contacts![item.key]}</label><br/><br/>
-              </div> :null
-          ))
-        }
-        </div>
-        <div>
+        <div css={styles.profileNameHeader}>
+        <div css={styles.profileNameContent}>
           {
-          user?.isVerified?
-          <div><img src={require('../../images/correct-right.png')}/></div>:null
-          
+            CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+              (item.key=='name')?
+                <label css={styles.nameValue}>{user!.contacts![item.key]}</label>:null
+            ))
           }
-        </div>
-        <div css={styles.infoBox}>
+          {
+              user?.isVerified? <img css={styles.verifyIcon} src={require('../../images/correct-right.png')}/>:null
+          }
+          </div>
+          <div>
         {
           CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
-            (item.key=='bio')?
-              <div css={styles.infoItem}>
-                <label css={styles.itemLabel}>{item.key}</label><br/>
-                <label css={styles.itemValue}>{user!.contacts![item.key]}</label><br/><br/>
-              </div> :null
+            (item.key=='bio')?<label css={styles.bioValue}>{user!.contacts![item.key]}</label>:null
           ))
         }
+        </div>
         </div>
         <div css={styles.infoBox}>
         {

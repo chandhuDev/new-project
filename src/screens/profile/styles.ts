@@ -65,8 +65,9 @@ export const styles = {
   color:gray;
   `,
   itemLabel:css`
-      font-size:10;
-      color:rgb(35, 90, 203);
+      font-size:12px;
+      line-height:16px;
+      color:#86a0d6;
       text-transform: capitalize;
   `,
   itemValue:css`
@@ -78,7 +79,8 @@ export const styles = {
     width:94%;
   `,
   infoBox:css`
-    margin-top:50px;
+    margin-top:15px;
+    border-bottom:1.3px solid #f2f2f2;
   `,
   infoItem:css`
       color:red;
@@ -95,8 +97,8 @@ export const styles = {
     margin-bottom:15px;
   `,
   socialIcon:css`
-    height:50px;
-    width:50px;
+    height:35px;
+    width:35px;
   `,
   headerBxContainer:css`
     position:relative;
@@ -112,4 +114,36 @@ export const styles = {
     position: relative;
     width: 100%;
   `,
+  profileNameHeader:css`
+      position:relative;
+      width:100%;
+      display: flex;
+      flex-direction: column;
+      border-bottom:1.3px solid #f2f2f2;
+      padding-bottom:10px;
+      margin-top:30px;
+  `,
+  profileNameContent:css`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  `,
+  nameValue:css`
+  font-size:16px;
+  color: #2f3542;
+  font-weight: 500;
+  margin-top: 5px;
+  opacity: 0.95;
+  `,
+  verifyIcon:css`
+    margin-left:10px;
+    margin-top:5px;
+  `,
+  bioValue:css`
+  font-size: 12px;
+  line-height: 16px;
+  color: #86a0d6;
+  text-transform: capitalize;
+  `
+
 }
