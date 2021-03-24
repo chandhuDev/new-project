@@ -7,6 +7,7 @@ export const styles = {
     padding: 125px 10px 0 10px;
     box-sizing: border-box;
     background: rgb(24, 44, 97);
+    position:relative;
     background: linear-gradient(
       180deg,
       rgba(24, 44, 97, 1) 0%,
@@ -27,7 +28,7 @@ export const styles = {
     z-index: 3;
     position: relative;
     width:300px;
-    margin: -150px auto 0;
+    margin:50px auto 0;
   `,
   avatar: css`
     margin-Top: -50px;
@@ -102,19 +103,31 @@ export const styles = {
     width:35px;
   `,
   headerBxContainer:css`
-    position:relative;
-    height:230px;
-    margin:0 -10px;
+    position:absolute;
+    top:0;
+    left:0;
+    height:300px;
+    width:100%;
+    z-index:0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
   `,
   bottonBg:css`
     width:100%;
+    height:300px;
     position:absolute;
-    bottom:0;
+    top:0;
+    left:0;
+    z-index:1;
   `,
   gradientBg:css`      
-    position: relative;
+    position: absolute;
     width: 100%;
-    margin-top: 80px;
+    height: 200px;
+    z-index: 2;
+    top:110px;
+    left: 0;
   `,
   profileNameHeader:css`
       position:relative;
