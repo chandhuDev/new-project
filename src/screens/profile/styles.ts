@@ -22,7 +22,8 @@ export const styles = {
   content: css`
     height: 100%;
     background-color: #ffffff;
-    padding: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     border-top-right-radius: 16px;
     border-top-left-radius: 16px;
     z-index: 3;
@@ -44,6 +45,9 @@ export const styles = {
     flex-direction: column;
     align-items: center;
     margin-top:-50px;
+    margin-right: 15px;
+    margin-left: 15px;
+
   `,
   countContainer:css`
     display: flex;
@@ -52,16 +56,16 @@ export const styles = {
     margin-top:-50px;
   `,
   countContainerBx:css`
-      width:20%;
+      width:25%;
       text-align:center;
   `,
   ccHeader:css`
-    font-size:16px;
+    font-size:12px;
     color:#2858c6;
     font-weight:700;
   `,
   ccValue:css`
-  font-size:14px;
+  font-size:12px;
   font-weight:700;
   margin-left:5px;
   color:gray;
@@ -83,6 +87,9 @@ export const styles = {
   infoBox:css`
     margin-top:15px;
     border-bottom:1.3px solid #f2f2f2;
+    margin-right: 15px;
+    margin-left: 15px;
+
   `,
   infoItem:css`
       color:red;
@@ -91,6 +98,9 @@ export const styles = {
     margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
+    margin-right: 15px;
+    margin-left: 15px;
+
   `,
   socialItem:css`
     width:25%;
@@ -130,13 +140,16 @@ export const styles = {
     left: 0;
   `,
   profileNameHeader:css`
-      position:relative;
-      width:100%;
-      display: flex;
-      flex-direction: column;
-      border-bottom:1.3px solid #f2f2f2;
-      padding-bottom:10px;
-      margin-top:30px;
+    position:relative;
+    // width:100%;
+    display: flex;
+    flex-direction: column;
+    border-bottom:1.3px solid #f2f2f2;
+    padding-bottom:10px;
+    margin-top:30px;
+    margin-right: 15px;
+    margin-left: 15px;
+
   `,
   profileNameContent:css`
     display: flex;
