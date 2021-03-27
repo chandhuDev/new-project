@@ -172,6 +172,14 @@ export const styles = {
   line-height: 14px;
   color:rgba(35, 90, 203, 0.8);
   text-transform: capitalize;
+  `,
+  itemLink:css`
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-decoration: none;
+  `,
+  triggerIcon:css`
+    height: 20px;
   `
-
 }
