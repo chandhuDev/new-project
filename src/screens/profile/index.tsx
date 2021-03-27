@@ -147,10 +147,36 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
         }
         </div>
         </div>
+
+        <div>
+        {
+          CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+              (item.key=='phone')?
+              <div css={styles.infoItem}>
+                <label css={styles.itemLabel}>{item.key}</label><br/>
+                <label css={styles.itemValue}>{user!.contacts![item.key]}</label>
+              <a href={'tel:'+user!.contacts![item.key]}><img css={styles.verifyIcon} src={require('../../images/phone.png')}/></a>
+              </div> 
+              :null
+          ))
+        }
+        </div>
+        <div>
+        {
+          CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+              (item.key=='email')?
+              <div css={styles.infoItem}>
+                <label css={styles.itemLabel}>{item.key}</label><br/>
+                <label css={styles.itemValue}>{user!.contacts![item.key]}</label>
+                <a href={'mailto:'+user!.contacts![item.key]}><img css={styles.verifyIcon} src={require('../../images/email.png')}/></a>
+              </div> :null
+          ))
+        }
+        </div>
         <div css={styles.infoBox}>
         {
           CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
-              (item.key!=='name' &&item.key!=='bio')?
+              (item.key!=='name' && item.key!=='bio' && item.key!=='phone' && item.key!=='email')?
               <div css={styles.infoItem}>
                 <label css={styles.itemLabel}>{item.key}</label><br/>
                 <label css={styles.itemValue}>{user!.contacts![item.key]}</label>
