@@ -153,7 +153,7 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
               (item.key!=='name' &&item.key!=='bio')?
               <div css={styles.infoItem}>
                 <label css={styles.itemLabel}>{item.key}</label><br/>
-                <label css={styles.itemValue}>{user!.contacts![item.key]}</label><br/><br/>
+                <label css={styles.itemValue}>{user!.contacts![item.key]}</label>
               </div> :null
           ))
         }

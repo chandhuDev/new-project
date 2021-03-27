@@ -71,9 +71,9 @@ export const styles = {
   color:gray;
   `,
   itemLabel:css`
-      font-size:12px;
-      line-height:16px;
-      color:#86a0d6;
+      font-size:10px;
+      line-height:14px;
+      color:rgba(35, 90, 203, 0.8);
       text-transform: capitalize;
   `,
   itemValue:css`
@@ -92,7 +92,7 @@ export const styles = {
 
   `,
   infoItem:css`
-      color:red;
+    margin-bottom:10px;
   `,
   socialBox:css`
     margin-top: 20px;
@@ -168,9 +168,9 @@ export const styles = {
     margin-top:5px;
   `,
   bioValue:css`
-  font-size: 12px;
-  line-height: 16px;
-  color: #86a0d6;
+  font-size: 10px;
+  line-height: 14px;
+  color:rgba(35, 90, 203, 0.8);
   text-transform: capitalize;
   `
 
