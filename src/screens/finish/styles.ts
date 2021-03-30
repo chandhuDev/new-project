@@ -29,7 +29,7 @@ export const styles = {
     justify-content: center;
     align-items: center;
     display: flex;
-    width: 320px;
+    width:95%;
     margin: 0 auto;
     text-align: center;
   `,

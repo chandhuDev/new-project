@@ -28,7 +28,7 @@ export const styles = {
     border-top-left-radius: 16px;
     z-index: 3;
     position: relative;
-    width:300px;
+    width:95%;
     margin:50px auto 0;
   `,
   avatar: css`
