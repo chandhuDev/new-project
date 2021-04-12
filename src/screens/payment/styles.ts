@@ -4,7 +4,7 @@ export const styles = {
   container: css`
     min-height: 100vh;
 
-    padding: 125px 10px 0 10px;
+    padding: 125px 0 0;
     box-sizing: border-box;
 
     background: rgb(24, 44, 97);

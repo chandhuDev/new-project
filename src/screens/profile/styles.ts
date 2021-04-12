@@ -2,9 +2,12 @@ import { css } from '@emotion/core'
 import { Children } from 'react'
 
 export const styles = {
+  body:css`
+    overflow: hidden;
+  `,
   container: css`
     min-height: 100vh;
-    padding: 125px 10px 0 10px;
+    padding: 125px 0 0;
     box-sizing: border-box;
     background: rgb(24, 44, 97);
     position:relative;
@@ -13,6 +16,8 @@ export const styles = {
       rgba(24, 44, 97, 1) 0%,
       rgba(27, 156, 252, 1) 100%
     );
+    overflow: hidden;
+    height: 100vh;
   `,
 
   containerBilling: css`
@@ -56,16 +61,16 @@ export const styles = {
     margin-top:-50px;
   `,
   countContainerBx:css`
-      width:25%;
+      width:28%;
       text-align:center;
   `,
   ccHeader:css`
-    font-size:12px;
+    font-size:18px;
     color:#2858c6;
     font-weight:700;
   `,
   ccValue:css`
-  font-size:12px;
+  font-size:18px;
   font-weight:700;
   margin-left:5px;
   color:gray;
@@ -181,5 +186,9 @@ export const styles = {
   `,
   triggerIcon:css`
     height: 20px;
+  `,
+  scrollingBox:css`
+    overflow: auto;
+    height: calc(100vh - 320px);
   `
 }
