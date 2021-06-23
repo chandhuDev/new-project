@@ -33,7 +33,8 @@ export const styles = {
     border-top-left-radius: 16px;
     z-index: 3;
     position: relative;
-    width:95%;
+    // width:95%;
+    width:93%;
     margin:50px auto 0;
   `,
   avatar: css`
@@ -42,7 +43,8 @@ export const styles = {
     width:120px;
     height:120px;
     border-radius:50%;
-    border:5px solid #fff;
+    // border:5px solid #fff;
+    border:3px solid #fff;
   `,
   headerContainer: css`
     display: flex;
@@ -59,6 +61,7 @@ export const styles = {
     justify-content:space-between;
     width: 100%;
     margin-top:-50px;
+    margin-top:-35px;
   `,
   countContainerBx:css`
       width:28%;
@@ -97,7 +100,8 @@ export const styles = {
 
   `,
   infoItem:css`
-    margin-bottom:10px;
+    // margin-bottom:10px;
+    margin-bottom:15px;
   `,
   socialBox:css`
     margin-top: 20px;
@@ -111,11 +115,14 @@ export const styles = {
     width:25%;
     display: flex;
     justify-content: center;
-    margin-bottom:15px;
+    // margin-bottom:15px;
+    margin-bottom:20px;
   `,
   socialIcon:css`
-    height:35px;
-    width:35px;
+    // height:35px;
+    // width:35px;
+    height:50px;
+    width:50px;
   `,
   headerBxContainer:css`
     position:absolute;
@@ -160,23 +167,28 @@ export const styles = {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-top: 15px;
   `,
   nameValue:css`
-  font-size:16px;
+  // font-size:16px;
+  font-size:18px;
   color: #2f3542;
   font-weight: 500;
-  margin-top: 5px;
+  // margin-top: 5px;
   opacity: 0.95;
   `,
   verifyIcon:css`
     margin-left:10px;
-    margin-top:5px;
+    // margin-top:5px;
   `,
   bioValue:css`
   font-size: 10px;
   line-height: 14px;
   color:rgba(35, 90, 203, 0.8);
   text-transform: capitalize;
+  max-width: 210px;
+  display:block;
+  margin-top:10px;
   `,
   itemLink:css`
     display: flex;
@@ -189,6 +201,7 @@ export const styles = {
   `,
   scrollingBox:css`
     overflow: auto;
-    height: calc(100vh - 320px);
+    // height: calc(100vh - 320px);
+    height: calc(100vh - 390px);
   `
 }
