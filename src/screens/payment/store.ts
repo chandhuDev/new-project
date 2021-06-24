@@ -71,8 +71,9 @@ export class PaymentStore {
   @action
   public confirmPayment = () => {
     this.loading = true
-
+    console.log(' this.paymentData!.element', this.paymentData!.element)
     return this.paymentData!.stripe.confirmCardPayment(this.clientSecret, {
+     
       payment_method: { card: this.paymentData!.element },
     }).finally(() => {
       this.loading = false

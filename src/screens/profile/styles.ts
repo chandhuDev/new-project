@@ -149,12 +149,14 @@ export const styles = {
     margin-top:30px;
     margin-right: 15px;
     margin-left: 15px;
+    
 
   `,
   profileNameContent:css`
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content:space-between;
   `,
   nameValue:css`
   font-size:16px;
@@ -166,6 +168,9 @@ export const styles = {
   verifyIcon:css`
     margin-left:10px;
     margin-top:5px;
+    margin-left: 10px;
+    top: 3px;
+    position: relative;
   `,
   bioValue:css`
   font-size: 10px;
@@ -178,7 +183,15 @@ export const styles = {
     justify-content: space-between;
     align-items: flex-start;
     text-decoration: none;
-  `,
+`,
+saveButton:css`
+text-decoration: none;
+background: #1E90FF;
+padding:8px 15px;
+border-radius:15px;
+text-decoration:none;
+color:white;
+`,
   triggerIcon:css`
     height: 20px;
   `
