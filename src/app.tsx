@@ -6,6 +6,8 @@ import { PaymentScreen,ProfileScreen,FinishScreen } from './screens'
 import { global } from './styles'
 import { Spinner } from './components'
 
+import './stylesheet.scss'
+
 export const App: FC = () => (
   <>
     <Global styles={global} />
