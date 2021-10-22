@@ -2,9 +2,12 @@ import { css } from '@emotion/core'
 import { Children } from 'react'
 
 export const styles = {
+  body:css`
+    overflow: hidden;
+  `,
   container: css`
     min-height: 100vh;
-    padding: 125px 10px 0 10px;
+    padding: 125px 0 0;
     box-sizing: border-box;
     background: rgb(24, 44, 97);
     position:relative;
@@ -13,6 +16,8 @@ export const styles = {
       rgba(24, 44, 97, 1) 0%,
       rgba(27, 156, 252, 1) 100%
     );
+    overflow: hidden;
+    height: 100vh;
   `,
 
   containerBilling: css`
@@ -28,7 +33,8 @@ export const styles = {
     border-top-left-radius: 16px;
     z-index: 3;
     position: relative;
-    width:95%;
+    // width:95%;
+    width:93%;
     margin:50px auto 0;
   `,
   avatar: css`
@@ -37,7 +43,8 @@ export const styles = {
     width:120px;
     height:120px;
     border-radius:50%;
-    border:5px solid #fff;
+    // border:5px solid #fff;
+    border:3px solid #fff;
   `,
   headerContainer: css`
     display: flex;
@@ -54,18 +61,19 @@ export const styles = {
     justify-content:space-between;
     width: 100%;
     margin-top:-50px;
+    margin-top:-35px;
   `,
   countContainerBx:css`
-      width:25%;
+      width:28%;
       text-align:center;
   `,
   ccHeader:css`
-    font-size:12px;
+    font-size:18px;
     color:#2858c6;
     font-weight:700;
   `,
   ccValue:css`
-  font-size:12px;
+  font-size:18px;
   font-weight:700;
   margin-left:5px;
   color:gray;
@@ -92,7 +100,8 @@ export const styles = {
 
   `,
   infoItem:css`
-    margin-bottom:10px;
+    // margin-bottom:10px;
+    margin-bottom:15px;
   `,
   socialBox:css`
     margin-top: 20px;
@@ -106,11 +115,14 @@ export const styles = {
     width:25%;
     display: flex;
     justify-content: center;
-    margin-bottom:15px;
+    // margin-bottom:15px;
+    margin-bottom:20px;
   `,
   socialIcon:css`
-    height:35px;
-    width:35px;
+    // height:35px;
+    // width:35px;
+    height:50px;
+    width:50px;
   `,
   headerBxContainer:css`
     position:absolute;
@@ -159,24 +171,25 @@ export const styles = {
     justify-content:space-between;
   `,
   nameValue:css`
-  font-size:16px;
+  // font-size:16px;
+  font-size:18px;
   color: #2f3542;
   font-weight: 500;
-  margin-top: 5px;
+  // margin-top: 5px;
   opacity: 0.95;
   `,
   verifyIcon:css`
     margin-left:10px;
-    margin-top:5px;
-    margin-left: 10px;
-    top: 3px;
-    position: relative;
+    // margin-top:5px;
   `,
   bioValue:css`
   font-size: 10px;
   line-height: 14px;
   color:rgba(35, 90, 203, 0.8);
   text-transform: capitalize;
+  max-width: 210px;
+  display:block;
+  margin-top:10px;
   `,
   itemLink:css`
     display: flex;
@@ -194,5 +207,10 @@ color:white;
 `,
   triggerIcon:css`
     height: 20px;
+  `,
+  scrollingBox:css`
+    overflow: auto;
+    // height: calc(100vh - 320px);
+    height: calc(100vh - 390px);
   `
 }
