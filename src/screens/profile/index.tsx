@@ -49,6 +49,8 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
   }> = [
     
     { key: 'name' },
+    { key: 'first_name' },
+    { key: 'last_name' },
     { key: 'bio' },
     { key: 'phone' },
     { key: 'email' },
@@ -132,11 +134,30 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
           <div>
           {
             CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
-              (item.key=='name')?
-                <label css={styles.nameValue}>{user!.contacts![item.key]}</label>
+              (item.key=='first_name')?
+                <label css={styles.nameValue}>{user!.contacts![item.key]}{" "}</label>
                 //:null
                 :null
-            ))
+
+                
+            )
+            
+            )
+
+            
+          }
+
+          {
+                 CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+                  (item.key=='last_name')?
+                    <label css={styles.nameValue}>{user!.contacts![item.key]}</label>
+                    //:null
+                    :null
+    
+                    
+                )
+                
+                )
           }
          
 

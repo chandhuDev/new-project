@@ -31,7 +31,8 @@ export interface User {
   contacts: {
     name?: string
     bio?: string
-
+    first_name?:string
+    last_name?:string
     phone?: string
     email?: string
     website?: string
