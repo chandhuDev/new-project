@@ -68,12 +68,12 @@ export const styles = {
       text-align:center;
   `,
   ccHeader:css`
-    font-size:18px;
+    font-size:16px;
     color:#2858c6;
     font-weight:700;
   `,
   ccValue:css`
-  font-size:18px;
+  font-size:16px;
   font-weight:700;
   margin-left:5px;
   color:gray;
