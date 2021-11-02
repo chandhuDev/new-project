@@ -119,10 +119,10 @@ export const styles = {
     margin-bottom:20px;
   `,
   socialIcon:css`
-    // height:35px;
-    // width:35px;
-    height:50px;
-    width:50px;
+    height:35px;
+    width:35px;
+    // height:50px;
+    // width:50px;
   `,
   headerBxContainer:css`
     position:absolute;
