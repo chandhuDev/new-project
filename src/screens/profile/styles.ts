@@ -68,12 +68,12 @@ export const styles = {
       text-align:center;
   `,
   ccHeader:css`
-    font-size:18px;
+    font-size:16px;
     color:#2858c6;
     font-weight:700;
   `,
   ccValue:css`
-  font-size:18px;
+  font-size:16px;
   font-weight:700;
   margin-left:5px;
   color:gray;
@@ -119,10 +119,10 @@ export const styles = {
     margin-bottom:20px;
   `,
   socialIcon:css`
-    // height:35px;
-    // width:35px;
-    height:50px;
-    width:50px;
+    height:35px;
+    width:35px;
+    // height:50px;
+    // width:50px;
   `,
   headerBxContainer:css`
     position:absolute;
