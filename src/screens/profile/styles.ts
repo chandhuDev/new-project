@@ -16,7 +16,7 @@ export const styles = {
       rgba(24, 44, 97, 1) 0%,
       rgba(27, 156, 252, 1) 100%
     );
-    // overflow: hidden;
+    overflow: hidden;
     height: 100vh;
   `,
 
