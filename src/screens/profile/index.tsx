@@ -129,15 +129,37 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
         </div>
         <div css={styles.profileNameHeader}>
         <div css={styles.profileNameContent}>
+          <div>
           {
             CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
               (item.key=='name')?
-                <label css={styles.nameValue}>{user!.contacts![item.key]}</label>:null
+                <label css={styles.nameValue}>{user!.contacts![item.key]}</label>
+                //:null
+                :null
             ))
           }
+         
+
           {
               user?.isVerified? <img css={styles.verifyIcon} src={require('../../images/correct-right.png')}/>:null
           }
+          </div>
+          {
+            CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+              (item.key=='phone')?
+              <a href={'tel:'+user!.contacts![item.key]} css={styles.saveButton}>
+              Save</a>
+                //:null
+                :null
+            ))
+          }
+       
+          {/* <div>
+            <a href></a>
+          </div> */}
+          {/* {
+              user?.isVerified? <img css={styles.verifyIcon} src={require('../../images/correct-right.png')}/>:null
+          } */}
           </div>
           <div>
         {
