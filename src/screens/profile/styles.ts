@@ -216,5 +216,10 @@ color:white;
   saveButton: css`
   font-size: 14px;
   padding: 5px 15px;
+  background: #005acf;
+  border-radius: 30px;
+  font-size: 14px;
+  color: white;
+  text-decoration: none;
   `
 }

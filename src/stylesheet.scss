@@ -19,20 +19,21 @@
     background: #005ACF; 
   }
 
-
+  .css-k3a0s8-saveButton {
+    padding: 5px 15px;
+    font-size: 14px;
+    background: #005acf;
+    border-radius: 30px;
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+  }
+  
   @media only screen and (max-width: 767px) {
     .css-ffwcsg-container {
       height: auto;
     }
-    .css-k3a0s8-saveButton {
-      padding: 5px 15px;
-      font-size: 14px;
-      background: #005acf;
-      border-radius: 30px;
-      font-size: 14px;
-      color: white;
-      text-decoration: none;
-    }
+    
     .css-16otjo6-scrollingBox {
       height: auto;
     }
