@@ -28,13 +28,12 @@
     color: white;
     text-decoration: none;
   }
-  
+
   @media only screen and (max-width: 767px) {
-    .css-ffwcsg-container {
-      height: auto;
+    .css-ffwcsg-container, .css-11g0njk-container {
+      height: auto !important;
     }
-    
     .css-16otjo6-scrollingBox {
-      height: auto;
+      height: auto !important;
     }
   }
