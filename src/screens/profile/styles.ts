@@ -16,7 +16,7 @@ export const styles = {
       rgba(24, 44, 97, 1) 0%,
       rgba(27, 156, 252, 1) 100%
     );
-    overflow: hidden;
+    // overflow: hidden;
     height: 100vh;
   `,
 
@@ -101,7 +101,7 @@ export const styles = {
   `,
   infoItem:css`
     // margin-bottom:10px;
-    margin-bottom:15px;
+    margin-bottom: 5px;
   `,
   socialBox:css`
     margin-top: 20px;
@@ -212,5 +212,9 @@ color:white;
     overflow: auto;
     // height: calc(100vh - 320px);
     height: calc(100vh - 390px);
+  `,
+  saveButton: css`
+  font-size: 14px;
+  padding: 5px 15px;
   `
 }
