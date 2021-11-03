@@ -105,7 +105,7 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
   calendly:require('../../images/identities/calendly.png'),
 }
   return (
-    <main css={[styles.container]}>
+    <main css={[styles.container]} className="background-container">
         <div css={[styles.headerBxContainer,{backgroundImage:`url(${user?.contacts?.coverUrl})`}]} >
           
           <img src={require('../../images/gradient.png')} alt="Gradient Image" css={styles.gradientBg} />
