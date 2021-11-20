@@ -23,9 +23,12 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
   // use shipping info for billing when checkbox checked
   useEffect(() => {
     var location = window.location.pathname.split("/")
-    setID(location[3])
-    if(location[3] != undefined){
-      getUser(location[3]);
+    // setID(location[3])
+    // if(location[3] != undefined){
+    //   getUser(location[3]);
+    setID(location[2])
+    if(location[2] != undefined){
+      getUser(location[2]);
 
     }
   }, [])
@@ -56,6 +59,10 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
     { key: 'company' },
     { key: 'position' },
     { key: 'location' },
+    { key: 'location' },
+    { key: 'first_name' },
+    { key: 'last_name' },
+    
   ]
   const SOCIAL_LINKS: Record<keyof User['identities'], any> = {
     telegram: 'https://t.me',
@@ -104,6 +111,29 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
   freelancer: require('../../images/identities/freelancer.png'),
   calendly:require('../../images/identities/calendly.png'),
 }
+const  raf_create_vcard=()=>{
+  //console.log('user>>>',user)
+  // var name = 'Daniel';
+  // var format_email = 'daniel@gmail.com';
+  // var format_tel = '02228178262';
+ // var format_fax = '123456';
+  // var format_www = 'wwww.onetaphello.com';
+   // var format_address = '123456';
+
+   var name = user?.contacts.first_name + ' '+user?.contacts.last_name;
+   var email = user?.contacts.email//'daniel@gmail.com';
+  var phone = user?.contacts.phone;//'02228178262';//user?.contacts.phone;//'02228178262';
+  var website = user?.contacts.website;//'123456';
+  var company = user?.contacts.company;
+  var position = user?.contacts.position;
+  var location = user?.contacts.location;
+   
+    //return 'BEGIN%3AVCARD%0D%0AVERSION%3A4.0%0D%0AN%3A%3B'+name+'%3B%3B%3B%0D%0AFN%3A'+name+'%0D%0AEMAIL%3A'+format_email+'%0D%0AORG%3A'+name+'%0D%0ATEL%3A'+format_tel+'%0D%0ATEL%3Btype%3DFAX%3A'+format_fax+'%0D%0AURL%3Btype%3Dpref%3A'+format_www+'%0D%0AADR%3A%3B'+format_address+'%3B%3B%3B%3B%3BSpain%0D%0AEND%3AVCARD';   
+     return 'BEGIN%3AVCARD%0D%0AVERSION%3A4.0%0D%0AN%3A%3B'+name+'%3B%3B%3B%0D%0AFN%3A'+name+'%0D%0AEMAIL%3A'+email+'%0D%0AORG%3A'+company+'%0D%0ATEL%3A'+phone+'%0D%0AURL%3Btype%3Dpref%3A'+website+'%0D%0AADR%3A%3B'+location+'%0D%0AEND%3AVCARD';   
+  
+    //return 'BEGIN%3AVCARD%0D%0AVERSION%3A4.0%0D%0AN%3A%3B'+name+'%0D%0AEMAIL%3A'+email+'%0D%0ATEL%3A'+phone+'URL'+website+'ORG'+company+'TITLE;CHARSET=UTF-8'+position+'%0D%0AADR%3A%3B'+location+'%3B%3B%3B%3B%3BSpain%0D%0AEND%3AVCARD';   
+    
+  }
   return (
     <main css={[styles.container]} className="background-container">
         <div css={[styles.headerBxContainer,{backgroundImage:`url(${user?.contacts?.coverUrl})`}]} >
@@ -132,19 +162,26 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
           <div>
           {
             CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
-              (item.key=='name')?
+              (item.key=='first_name')?
                 <label css={styles.nameValue}>{user!.contacts![item.key]}</label>
                 //:null
                 :null
             ))
           }
          
-
+         {
+            CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+              (item.key=='last_name')?
+                <label css={styles.nameValue}>{' '}{user!.contacts![item.key]}</label>
+                //:null
+                :null
+            ))
+          }
           {
               user?.isVerified? <img css={styles.verifyIcon} src={require('../../images/correct-right.png')}/>:null
           }
           </div>
-          {
+          {/* {
             CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
               (item.key=='phone')?
               <a href={'tel:'+user!.contacts![item.key]} css={styles.saveButton}>
@@ -152,8 +189,37 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
                 //:null
                 :null
             ))
-          }
-       
+          } */}
+          {/* {
+             CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+               (item.key=='phone')?
+               <a href={'tel:'+user!.contacts![item.key]} css={styles.saveButton}>
++              
+               Save</a>
++              
++               
++                :null
++            ))
++          } */}
+            {/* {
+            CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+              (item.key=='phone')?
+              // <a href="data:text/vcard;charset=UTF-8,"{raf_create_vcard()} download="contact.vcf">Download</a>              <a  css={styles.saveButton} href={'data:text/vcard;charset=UTF-8,' + raf_create_vcard()} download="contact.vcf">Save</a>
+             
+                 //:null
+                 :null
+             ))
+           } */}
+        {
+            CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+              (item.key=='phone')?
+              // <a href="data:text/vcard;charset=UTF-8,"{raf_create_vcard()} download="contact.vcf">Download</a>
+              <a   css={styles.saveButton} href={'data:text/vcard;charset=UTF-8,' + raf_create_vcard()} download="contact.vcf">Save</a>
+              
+                 //:null
+                 :null
+             ))
+           }
           {/* <div>
             <a href></a>
           </div> */}
@@ -161,6 +227,10 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
               user?.isVerified? <img css={styles.verifyIcon} src={require('../../images/correct-right.png')}/>:null
           } */}
           </div>
+
+          {
+           // console.log('name>>>',user)
+          }
           <div>
         {
           CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
