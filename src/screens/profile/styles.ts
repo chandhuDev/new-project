@@ -16,7 +16,7 @@ export const styles = {
       rgba(24, 44, 97, 1) 0%,
       rgba(27, 156, 252, 1) 100%
     );
-    // overflow: hidden;
+    overflow: hidden;
     height: 100vh;
   `,
 
@@ -179,7 +179,7 @@ export const styles = {
   opacity: 0.95;
   `,
   verifyIcon:css`
-    margin-left:10px;
+    // margin-left:10px;
     // margin-top:5px;
   `,
   bioValue:css`
@@ -216,5 +216,10 @@ color:white;
   saveButton: css`
   font-size: 14px;
   padding: 5px 15px;
+  background: #005acf;
+  border-radius: 30px;
+  font-size: 14px;
+  color: white;
+  text-decoration: none;
   `
 }
