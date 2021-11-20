@@ -179,7 +179,7 @@ export const styles = {
   opacity: 0.95;
   `,
   verifyIcon:css`
-    margin-left:10px;
+    // margin-left:10px;
     // margin-top:5px;
   `,
   bioValue:css`
