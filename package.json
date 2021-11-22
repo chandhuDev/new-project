@@ -55,6 +55,7 @@
     "react-feather": "^2.0.8",
     "react-hook-form": "^6.2.0",
     "react-native": "^0.63.4",
+    "vcard-generator": "^0.0.7",
     "vcards-js": "^2.10.0"
   }
 }
