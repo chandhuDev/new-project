@@ -17,6 +17,7 @@ export const App: FC = () => (
       <Router>
         <PaymentScreen path="/payment" />
         <FinishScreen path="/payment/finish" />
+        {/* <ProfileScreen path="/profile/:profile/:id" /> */}
         <ProfileScreen path="/:profile/:id" />
         <Redirect from="*" to="/payment" noThrow />
         

@@ -42,6 +42,8 @@ export interface User {
     position?: string
     avatarUrl?: any
     coverUrl?: any
+    first_name?:any
+    last_name?:any
   }
 
   identities: UserIdentities
