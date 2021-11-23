@@ -63,7 +63,6 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
     { key: 'company' },
     { key: 'position' },
     { key: 'location' },
-    { key: 'location' },
   ]
   const SOCIAL_LINKS: Record<keyof User['identities'], any> = {
     telegram: 'https://t.me',
@@ -207,14 +206,14 @@ const  raf_create_vcard=()=>{
   }
   return (
     <main css={[styles.container]} className="background-container">
-        <div css={[styles.headerBxContainer,{backgroundImage:`url(${user?.contacts?.coverUrl})`}]} >
+        <div css={[styles.headerBxContainer,{backgroundImage:`url(${user?.contacts?.coverUrl != '' ? user?.contacts?.coverUrl: require('../../images/profilebg.jpg')})`}]} >
           
           <img src={require('../../images/gradient.png')} alt="Gradient Image" css={styles.gradientBg} />
         </div>
       <section css={styles.content}>
         <div css={styles.headerContainer}>
           <img
-            src={user?.contacts?.avatarUrl}
+            src={user?.contacts?.avatarUrl != '' ?user?.contacts?.avatarUrl:require('../../images/profile.jpg') }
             css={[styles.avatar]}
           />
           <div css={styles.countContainer}>
@@ -230,30 +229,26 @@ const  raf_create_vcard=()=>{
         </div>
         <div css={styles.profileNameHeader}>
         <div css={styles.profileNameContent}>
-          <div>
+          <div css={styles.profileNameContainer}>
           {
             CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
               (item.key=='first_name')?
                 <label css={styles.nameValue}>{user!.contacts![item.key]}</label>
                 //:null
                 :null
-                
             )
-            
             )
-
-            
           }
          {
             CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
               (item.key=='last_name')?
-                <label css={styles.nameValue}>{' '}{user!.contacts![item.key]}</label>
+                <label css={styles.nameValue}>&nbsp;{user!.contacts![item.key]}</label>
                 //:null
                 :null
             ))
           }
           {
-              user?.isVerified? <img css={styles.verifyIcon} src={require('../../images/correct-right.png')}/>:null
+              user?.isVerified? <img css={styles.verifyIcon} src={require('../../images/verified.svg')}/>:null
           }
           </div>
           {/* {
@@ -355,7 +350,7 @@ const  raf_create_vcard=()=>{
                 </div> :null
             ))
           }        
-          {
+          {/* {
             CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
               (item.key=='first_name')?
               <div css={styles.infoItem}>
@@ -376,7 +371,7 @@ const  raf_create_vcard=()=>{
                 :null
               )
             )
-          }
+          } */}
          
           {
             CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (

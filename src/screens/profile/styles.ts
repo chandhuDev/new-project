@@ -170,6 +170,9 @@ export const styles = {
     align-items: center;
     justify-content:space-between;
   `,
+  profileNameContainer:css`
+  display: flex;
+  `,
   nameValue:css`
   // font-size:16px;
   font-size:18px;
@@ -179,8 +182,10 @@ export const styles = {
   opacity: 0.95;
   `,
   verifyIcon:css`
-    // margin-left:10px;
-    // margin-top:5px;
+    margin-left:2px;
+    // margin-top: px;
+    height:20px;
+    width:20px;
   `,
   bioValue:css`
   font-size: 10px;
