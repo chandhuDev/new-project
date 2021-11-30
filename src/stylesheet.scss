@@ -28,10 +28,42 @@
     color: white;
     text-decoration: none;
   }
+  .mobbg-container {
+    width: 340px;
+    height: 600px;
+    margin: auto;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    background-image: url(../src/images/mobile-iframe.png);
+    background-size: 340px 100%;
+    background-repeat: no-repeat;   
+    padding-top: 20px; 
+  }
+  .form {
+    overflow: auto;
+    &.payment {
+      max-height: 405px;
+    }
+    &.checkout {
+      max-height: 200px;
+    }
+  } 
 
   @media only screen and (max-width: 767px) {
     .css-ffwcsg-container, .css-11g0njk-container {
       height: auto !important;
+    }
+    .mobbg-container {
+      margin: 0;
+      background-image: none;
+      width: 100%;
+      height: 100%;
+      padding-top: 0;
+      .background-container {
+        border-radius: 0;
+        width: 100%;
+        height: 100%;
+      }
     }
     // .css-16otjo6-scrollingBox {
     //   height: auto !important;

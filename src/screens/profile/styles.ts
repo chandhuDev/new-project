@@ -6,7 +6,6 @@ export const styles = {
     overflow: hidden;
   `,
   container: css`
-    min-height: 100vh;
     padding: 125px 0 0;
     box-sizing: border-box;
     background: rgb(24, 44, 97);
@@ -17,7 +16,10 @@ export const styles = {
       rgba(27, 156, 252, 1) 100%
     );
     overflow: hidden;
-    height: 100vh;
+    width: 90%;
+    height: 96%;
+    margin: auto;
+    border-radius: 25px
   `,
 
   containerBilling: css`

@@ -135,168 +135,170 @@ const  raf_create_vcard=()=>{
     
   }
   return (
-    <main css={[styles.container]} className="background-container">
-        <div css={[styles.headerBxContainer,{backgroundImage:`url(${user?.contacts?.coverUrl})`}]} >
+    <div className="mobbg-container">
+      <main css={[styles.container]} className="background-container">
+          <div css={[styles.headerBxContainer,{backgroundImage:`url(${user?.contacts?.coverUrl})`}]} >
+            
+            <img src={require('../../images/gradient.png')} alt="Gradient Image" css={styles.gradientBg} />
+          </div>
+        <section css={styles.content}>
+          <div css={styles.headerContainer}>
+            <img
+              src={user?.contacts?.avatarUrl}
+              css={[styles.avatar]}
+            />
+            <div css={styles.countContainer}>
+              <div css={styles.countContainerBx}>
+                <label css={styles.ccHeader}>{user?.tapsCount}</label>
+                <label css={styles.ccValue}>Taps</label>
+              </div>
+              <div css={styles.countContainerBx}>
+                <label css={styles.ccHeader}>{user?.shareCount}</label>
+                <label css={styles.ccValue}>Views</label>
+              </div>
+            </div>
+          </div>
+          <div css={styles.profileNameHeader}>
+          <div css={styles.profileNameContent}>
+            <div>
+            {
+              CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+                (item.key=='first_name')?
+                  <label css={styles.nameValue}>{user!.contacts![item.key]}</label>
+                  //:null
+                  :null
+              ))
+            }
           
-          <img src={require('../../images/gradient.png')} alt="Gradient Image" css={styles.gradientBg} />
-        </div>
-      <section css={styles.content}>
-        <div css={styles.headerContainer}>
-          <img
-            src={user?.contacts?.avatarUrl}
-            css={[styles.avatar]}
-          />
-          <div css={styles.countContainer}>
-            <div css={styles.countContainerBx}>
-              <label css={styles.ccHeader}>{user?.tapsCount}</label>
-              <label css={styles.ccValue}>Taps</label>
-            </div>
-            <div css={styles.countContainerBx}>
-              <label css={styles.ccHeader}>{user?.shareCount}</label>
-              <label css={styles.ccValue}>Views</label>
-            </div>
-          </div>
-        </div>
-        <div css={styles.profileNameHeader}>
-        <div css={styles.profileNameContent}>
-          <div>
           {
-            CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
-              (item.key=='first_name')?
-                <label css={styles.nameValue}>{user!.contacts![item.key]}</label>
-                //:null
-                :null
-            ))
-          }
-         
-         {
-            CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
-              (item.key=='last_name')?
-                <label css={styles.nameValue}>{' '}{user!.contacts![item.key]}</label>
-                //:null
-                :null
-            ))
-          }
-          {
-              user?.isVerified? <img css={styles.verifyIcon} src={require('../../images/correct-right.png')}/>:null
-          }
-          </div>
-          {/* {
-            CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
-              (item.key=='phone')?
-              <a href={'tel:'+user!.contacts![item.key]} css={styles.saveButton}>
-              Save</a>
-                //:null
-                :null
-            ))
-          } */}
-          {/* {
-             CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
-               (item.key=='phone')?
-               <a href={'tel:'+user!.contacts![item.key]} css={styles.saveButton}>
-+              
-               Save</a>
-+              
-+               
-+                :null
-+            ))
-+          } */}
+              CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+                (item.key=='last_name')?
+                  <label css={styles.nameValue}>{' '}{user!.contacts![item.key]}</label>
+                  //:null
+                  :null
+              ))
+            }
+            {
+                user?.isVerified? <img css={styles.verifyIcon} src={require('../../images/correct-right.png')}/>:null
+            }
+            </div>
             {/* {
-            CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
-              (item.key=='phone')?
-              // <a href="data:text/vcard;charset=UTF-8,"{raf_create_vcard()} download="contact.vcf">Download</a>              <a  css={styles.saveButton} href={'data:text/vcard;charset=UTF-8,' + raf_create_vcard()} download="contact.vcf">Save</a>
-             
-                 //:null
-                 :null
-             ))
-           } */}
-        {
-            CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
-              (item.key=='phone')?
-              // <a href="data:text/vcard;charset=UTF-8,"{raf_create_vcard()} download="contact.vcf">Download</a>
-              <a   css={styles.saveButton} href={'data:text/vcard;charset=UTF-8,' + raf_create_vcard()} download="contact.vcf">Save</a>
-              
-                 //:null
-                 :null
-             ))
-           }
-          {/* <div>
-            <a href></a>
-          </div> */}
-          {/* {
-              user?.isVerified? <img css={styles.verifyIcon} src={require('../../images/correct-right.png')}/>:null
-          } */}
-          </div>
-
-          {
-           // console.log('name>>>',user)
-          }
-          <div>
-        {
-          CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
-            (item.key=='bio')?<label css={styles.bioValue}>{user!.contacts![item.key]}</label>:null
-          ))
-        }
-        </div>
-        </div>
-        <div css={styles.scrollingBox}>
-          <div css={styles.infoBox}>
-          {
-            CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+              CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
                 (item.key=='phone')?
-                <div css={styles.infoItem}>
-                  <label css={styles.itemLabel}>{item.key}</label><br/>
-                  <a href={'tel:'+user!.contacts![item.key]} css={styles.itemLink}>
-                    <label css={styles.itemValue}>{user!.contacts![item.key]}</label>
-                  <img css={styles.triggerIcon} src={require('../../images/phone.png')}/></a>
-                </div> 
-                :null
-            ))
-          }
+                <a href={'tel:'+user!.contacts![item.key]} css={styles.saveButton}>
+                Save</a>
+                  //:null
+                  :null
+              ))
+            } */}
+            {/* {
+              CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+                (item.key=='phone')?
+                <a href={'tel:'+user!.contacts![item.key]} css={styles.saveButton}>
+  +              
+                Save</a>
+  +              
+  +               
+  +                :null
+  +            ))
+  +          } */}
+              {/* {
+              CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+                (item.key=='phone')?
+                // <a href="data:text/vcard;charset=UTF-8,"{raf_create_vcard()} download="contact.vcf">Download</a>              <a  css={styles.saveButton} href={'data:text/vcard;charset=UTF-8,' + raf_create_vcard()} download="contact.vcf">Save</a>
+              
+                  //:null
+                  :null
+              ))
+            } */}
+          {
+              CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+                (item.key=='phone')?
+                // <a href="data:text/vcard;charset=UTF-8,"{raf_create_vcard()} download="contact.vcf">Download</a>
+                <a   css={styles.saveButton} href={'data:text/vcard;charset=UTF-8,' + raf_create_vcard()} download="contact.vcf">Save</a>
+                
+                  //:null
+                  :null
+              ))
+            }
+            {/* <div>
+              <a href></a>
+            </div> */}
+            {/* {
+                user?.isVerified? <img css={styles.verifyIcon} src={require('../../images/correct-right.png')}/>:null
+            } */}
+            </div>
+
+            {
+            // console.log('name>>>',user)
+            }
+            <div>
           {
             CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
-                (item.key=='email')?
-                <div css={styles.infoItem}>
-                  <label css={styles.itemLabel}>{item.key}</label><br/>
-                  <a href={'mailto:'+user!.contacts![item.key]}  css={styles.itemLink}>
-                  <label css={styles.itemValue}>{user!.contacts![item.key]}</label>
-                  <img css={styles.triggerIcon} src={require('../../images/email.png')}/></a>
-                </div> :null
-            ))
-          }        
-          {
-            CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
-                (item.key!=='name' && item.key!=='bio' && item.key!=='phone' && item.key!=='email')?
-                <div css={styles.infoItem}>
-                  <label css={styles.itemLabel}>{item.key}</label><br/>
-                  <label css={styles.itemValue}>{user!.contacts![item.key]}</label>
-                </div> :null
+              (item.key=='bio')?<label css={styles.bioValue}>{user!.contacts![item.key]}</label>:null
             ))
           }
           </div>
-          <div css={styles.socialBox}>
-        {
-          Object.entries(user?.identities || {})
-            .filter(([_, value]) => Boolean(value))
-              .map(([type, value]) => (
-                user?.hideIdentities[type] ? null : 
-                // console.log(SOCIAL_LINKS[type]+'/'+value,type)
-                <div css={styles.socialItem}>
-                  {/* <label>{type}</label><br /> */}
-                  <a href={SOCIAL_LINKS[type]+'/'+value} target="_blank">
-                  <img
-                    src={IDENTITY_ICONS[type]}
-                    css={styles.socialIcon}
-                  />
-                  </a>
-                </div>
+          </div>
+          <div css={styles.scrollingBox}>
+            <div css={styles.infoBox}>
+            {
+              CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+                  (item.key=='phone')?
+                  <div css={styles.infoItem}>
+                    <label css={styles.itemLabel}>{item.key}</label><br/>
+                    <a href={'tel:'+user!.contacts![item.key]} css={styles.itemLink}>
+                      <label css={styles.itemValue}>{user!.contacts![item.key]}</label>
+                    <img css={styles.triggerIcon} src={require('../../images/phone.png')}/></a>
+                  </div> 
+                  :null
+              ))
+            }
+            {
+              CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+                  (item.key=='email')?
+                  <div css={styles.infoItem}>
+                    <label css={styles.itemLabel}>{item.key}</label><br/>
+                    <a href={'mailto:'+user!.contacts![item.key]}  css={styles.itemLink}>
+                    <label css={styles.itemValue}>{user!.contacts![item.key]}</label>
+                    <img css={styles.triggerIcon} src={require('../../images/email.png')}/></a>
+                  </div> :null
+              ))
+            }        
+            {
+              CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+                  (item.key!=='name' && item.key!=='bio' && item.key!=='phone' && item.key!=='email')?
+                  <div css={styles.infoItem}>
+                    <label css={styles.itemLabel}>{item.key}</label><br/>
+                    <label css={styles.itemValue}>{user!.contacts![item.key]}</label>
+                  </div> :null
+              ))
+            }
+            </div>
+            <div css={styles.socialBox}>
+          {
+            Object.entries(user?.identities || {})
+              .filter(([_, value]) => Boolean(value))
+                .map(([type, value]) => (
+                  user?.hideIdentities[type] ? null : 
+                  // console.log(SOCIAL_LINKS[type]+'/'+value,type)
+                  <div css={styles.socialItem}>
+                    {/* <label>{type}</label><br /> */}
+                    <a href={SOCIAL_LINKS[type]+'/'+value} target="_blank">
+                    <img
+                      src={IDENTITY_ICONS[type]}
+                      css={styles.socialIcon}
+                    />
+                    </a>
+                  </div>
+                )
               )
-            )
-          }
-        </div>
-        </div>
-      </section>
-    </main>
+            }
+          </div>
+          </div>
+        </section>
+      </main>
+    </div>
     );
 })
 
