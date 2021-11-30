@@ -6,6 +6,8 @@ import { styles } from './styles'
 import { apiRequest } from '../../api-request'
 import { SerializedStyles } from '@emotion/core'
 import vcard from 'vcard-generator';
+import {Helmet} from "react-helmet";
+import MetaTags from 'react-meta-tags';
 
 import { User } from '~/types'
 var vCardsJS = require('vcards-js');
@@ -206,6 +208,18 @@ const  raf_create_vcard=()=>{
   }
   return (
     <main css={[styles.container]} className="background-container">
+      		{/* <Helmet>
+          <meta name="og:image" content="../../images/gradient.png"/> 
+
+
+					
+      		</Helmet> */}
+            {/* <MetaTags>
+            <title>Your Page 1</title>
+            <meta name="description" content="Your description here.." />
+            <meta property="og:title" content="Your App" />
+            <meta property="og:image" content="gradient.png" />
+          </MetaTags> */}
         <div css={[styles.headerBxContainer,{backgroundImage:`url(${user?.contacts?.coverUrl != '' ? user?.contacts?.coverUrl: require('../../images/profilebg.jpg')})`}]} >
           
           <img src={require('../../images/gradient.png')} alt="Gradient Image" css={styles.gradientBg} />

@@ -53,7 +53,9 @@
     "react": "^16.14.0",
     "react-dom": "^16.13.1",
     "react-feather": "^2.0.8",
+    "react-helmet": "^6.1.0",
     "react-hook-form": "^6.2.0",
+    "react-meta-tags": "^1.0.1",
     "react-native": "^0.63.4",
     "vcard-generator": "^0.0.7",
     "vcards-js": "^2.10.0"

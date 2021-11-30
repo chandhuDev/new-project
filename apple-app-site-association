@@ -1,23 +1,11 @@
-HTTP/2 200 
-content-type: application/pkcs7-mime
-content-length: 156
-date: Wed, 18 Dec 2019 03:08:15 GMT
-last-modified: Wed, 18 Dec 2019 03:04:14 GMT
-etag: "redacted"
-x-amz-server-side-encryption: AES256
-accept-ranges: bytes
-server: AmazonS3
-x-cache: Miss from cloudfront
-via: 1.1 redacted.cloudfront.net (CloudFront)
-x-amz-cf-pop: redacted
-x-amz-cf-id: redacted
+
 {
     "applinks": {
         "apps": [],
-        "details": [
+        "details":[
             {
-                "appID": "ABCD1234.com.apple.wwdc",
-                "paths": ["*"]
+                "appID":"YH92Z4Q26A.com.onetaphello.onetaphello",
+                "paths":["*"]
             }
         ]
     }
