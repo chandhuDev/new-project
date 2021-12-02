@@ -276,25 +276,25 @@ const  raf_create_vcard=()=>{
             }
             </div>
             <div css={styles.socialBox}>
-          {
-            Object.entries(user?.identities || {})
-              .filter(([_, value]) => Boolean(value))
-                .map(([type, value]) => (
-                  user?.hideIdentities[type] ? null : 
-                  // console.log(SOCIAL_LINKS[type]+'/'+value,type)
-                  <div css={styles.socialItem}>
-                    {/* <label>{type}</label><br /> */}
-                    <a href={SOCIAL_LINKS[type]+'/'+value} target="_blank">
-                    <img
-                      src={IDENTITY_ICONS[type]}
-                      css={styles.socialIcon}
-                    />
-                    </a>
-                  </div>
-                )
-              )
-            }
-          </div>
+              {
+                Object.entries(user?.identities || {})
+                  .filter(([_, value]) => Boolean(value))
+                    .map(([type, value]) => (
+                      user?.hideIdentities[type] ? null : 
+                      // console.log(SOCIAL_LINKS[type]+'/'+value,type)
+                      <div css={styles.socialItem}>
+                        {/* <label>{type}</label><br /> */}
+                        <a href={SOCIAL_LINKS[type]+'/'+value} target="_blank">
+                        <img
+                          src={IDENTITY_ICONS[type]}
+                          css={styles.socialIcon}
+                        />
+                        </a>
+                      </div>
+                    )
+                  )
+                }
+            </div>
           </div>
         </section>
       </main>
