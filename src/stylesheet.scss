@@ -10,7 +10,7 @@
    
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #005ACF; 
+    background: #FFF; 
     border-radius: 0px;
   }
   
@@ -30,10 +30,9 @@
   }
   .mobbg-container {
     width: 340px;
-    height: 600px;
+    // height: 600px;
+    height: 100vh;
     margin: auto;
-    margin-top: 60px;
-    margin-bottom: 60px;
     background-image: url(../src/images/mobile-iframe.png);
     background-size: 340px 100%;
     background-repeat: no-repeat;   
