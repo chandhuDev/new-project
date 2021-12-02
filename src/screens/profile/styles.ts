@@ -219,6 +219,7 @@ color:white;
     overflow: auto;
     // height: calc(100vh - 320px);
     height: calc(100vh - 335px);
+    padding-bottom: 50px;
   `,
   saveButton: css`
   font-size: 14px;
