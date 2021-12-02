@@ -4,7 +4,7 @@ import { theme } from '~/styles'
 export const styles = {
   container: css`
     margin-top: 30px;
-  `,
+    `,
 
   inputs: css`
     display: grid;
