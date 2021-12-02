@@ -30,8 +30,12 @@
   }
   .mobbg-container {
     width: 340px;
-    // height: 600px;
-    height: 100vh;
+    height: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    // height: 100vh;
     margin: auto;
     background-image: url(../src/images/mobile-iframe.png);
     background-size: 340px 100%;

@@ -213,7 +213,7 @@ color:white;
   scrollingBox:css`
     overflow: auto;
     // height: calc(100vh - 320px);
-    height: calc(100vh - 390px);
+    height: calc(100vh - 335px);
   `,
   saveButton: css`
   font-size: 14px;
