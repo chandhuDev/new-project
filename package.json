@@ -2,7 +2,7 @@
   "scripts": {
     "start": "npx parcel serve -p 8080 src/index.html",
     "build": "npx parcel build --experimental-scope-hoisting src/index.html && cp -r ./.well-known ./dist",
-    "deploy": "npx firebase deploy --only hosting:onetaphello-landing-test",
+    "deploy": "npx firebase deploy --only hosting:onetaphello-landing",
     "check:format": "prettier --check './!(node_modules|dist)/**/*.{ts,tsx,js,jsx}'",
     "check:typescript": "tsc --noEmit -p .",
     "check:eslint": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
@@ -53,7 +53,11 @@
     "react": "^16.14.0",
     "react-dom": "^16.13.1",
     "react-feather": "^2.0.8",
+    "react-helmet": "^6.1.0",
     "react-hook-form": "^6.2.0",
-    "react-native": "^0.63.4"
+    "react-meta-tags": "^1.0.1",
+    "react-native": "^0.63.4",
+    "vcard-generator": "0.0.7",
+    "vcards-js": "^2.10.0"
   }
 }

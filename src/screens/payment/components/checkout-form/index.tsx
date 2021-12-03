@@ -36,19 +36,21 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({
   }, [stripe, elements, loading])
 
   return (
-    <form css={styles.container}>
-      <p css={styles.title}>Fill your billing information</p>
+    <div className="form checkout">
+      <form css={styles.container}>
+        <p css={styles.title}>Fill your billing information</p>
 
-      {loading ? (
-        <Loader css={styles.spinner} color={theme.blue[1]} size={24} strokeWidth={1.5} />
-      ) : (
-        <CardElement
-          options={cardElementOptions}
-          onChange={(e) => setCardFormFilled(e.complete)}
-        />
-      )}
+        {loading ? (
+          <Loader css={styles.spinner} color={theme.blue[1]} size={24} strokeWidth={1.5} />
+        ) : (
+          <CardElement
+            options={cardElementOptions}
+            onChange={(e) => setCardFormFilled(e.complete)}
+          />
+        )}
 
-      {error && <p css={styles.error}>{error}</p>}
-    </form>
+        {error && <p css={styles.error}>{error}</p>}
+      </form>
+    </div>
   )
 }

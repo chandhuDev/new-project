@@ -5,8 +5,8 @@
   "targets": {
     "onetaphello-c7766": {
       "hosting": {
-        "onetaphello-landing-test": [
-          "onetaphello-landing-test"
+        "onetaphello-landing": [
+          "onetaphello-landing"
         ]
       }
     }
