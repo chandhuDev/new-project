@@ -227,7 +227,7 @@ const  raf_create_vcard=()=>{
           </div>
           <div css={styles.profileNameHeader}>
           <div css={styles.profileNameContent}>
-            <div>
+            <div css={styles.profileBx}>
             {
               CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
                 (item.key=='first_name')?
