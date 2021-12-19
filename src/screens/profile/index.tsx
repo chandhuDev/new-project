@@ -358,7 +358,24 @@ const  raf_create_vcard=()=>{
               CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
                   (item.key!=='name' && item.key!=='bio' && item.key!=='phone' && item.key!=='email')?
                   <div css={styles.infoItem}>
-                    <label css={styles.itemLabel}>{item.key}</label><br/>
+                    {/* <label css={styles.itemLabel}>{item.key}</label><br/> */}
+                    {
+                      item.key=='first_name'?
+                      <>
+                        <label css={styles.itemLabel}>First Name</label><br/>
+                      </>  
+                      :
+                      item.key=='last_name'?
+                      <>
+                        <label css={styles.itemLabel}>Last Name</label><br/>
+                      </>  
+                      :
+
+                      <>
+                      <label css={styles.itemLabel}>{item.key}</label><br/>
+                      </>  
+                    }
+                    
                     <label css={styles.itemValue}>{user!.contacts![item.key]}</label>
                   </div> :null
               ))
