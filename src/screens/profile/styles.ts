@@ -86,6 +86,9 @@ export const styles = {
       color:rgba(35, 90, 203, 0.8);
       text-transform: capitalize;
   `,
+  profileBx:css`
+  display:flex;
+  `,
   itemValue:css`
     font-size: 14px;
     color:#2f3542;
@@ -179,12 +182,14 @@ export const styles = {
   font-weight: 500;
   // margin-top: 5px;
   opacity: 0.95;
+  margin-right: 5px;
   `,
   verifyIcon:css`
     margin-left:2px;
-    // margin-top: px;
-    height:20px;
-    width:20px;
+    margin-top:2px;
+    height:18px;
+    width:18px;
+
   `,
   bioValue:css`
   font-size: 10px;
