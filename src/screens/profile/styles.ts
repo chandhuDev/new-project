@@ -103,7 +103,7 @@ export const styles = {
   `,
   infoItem:css`
     // margin-bottom:10px;
-    margin-bottom: 5px;
+    margin-bottom:10px;
   `,
   socialBox:css`
     margin-top: 20px;
@@ -121,8 +121,8 @@ export const styles = {
     margin-bottom:20px;
   `,
   socialIcon:css`
-    height:35px;
-    width:35px;
+    height:45px;
+    width:45px;
     // height:50px;
     // width:50px;
   `,
