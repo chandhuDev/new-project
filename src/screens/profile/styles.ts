@@ -111,7 +111,6 @@ export const styles = {
     flex-wrap: wrap;
     margin-right: 15px;
     margin-left: 15px;
-
   `,
   socialItem:css`
     width:25%;
@@ -123,8 +122,6 @@ export const styles = {
   socialIcon:css`
     height:35px;
     width:35px;
-    // height:50px;
-    // width:50px;
   `,
   headerBxContainer:css`
     position:absolute;
@@ -219,7 +216,6 @@ color:white;
     overflow: auto;
     // height: calc(100vh - 320px);
     height: calc(100vh - 335px);
-    padding-bottom: 50px;
   `,
   saveButton: css`
   font-size: 14px;
