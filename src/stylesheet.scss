@@ -53,9 +53,27 @@
       max-height: 200px;
     }
   } 
-
+  .mobbg-container {
+    [class$="-scrollingBox"] {
+      padding-bottom:50px;
+    }
+    [class$="-socialBox"] {
+      padding-bottom:50px;
+    }
+  }
+  @media only screen and (max-width: 1024px) {
+    .mobbg-container {
+      [class$="-scrollingBox"] {
+        height: 200px;
+        padding-bottom: 0;
+      }
+      [class$="-socialBox"] {
+        padding-bottom: 0;
+      }
+    }
+  }
   @media only screen and (max-width: 767px) {
-    .css-ffwcsg-container, .css-11g0njk-container {
+    [class$="-container"]{
       height: auto !important;
     }
     .mobbg-container {
@@ -65,15 +83,20 @@
       height: 100%;
       max-height: 100%;
       padding-top: 0;
-      .css-1k089dc-scrollingBox {
-        padding-bottom:50px;
-      }
       .background-container {
         border-radius: 0;
         width: 100%;
         height: 100%;
       }
+      [class$="-scrollingBox"] {
+        height: calc(100vh - 335px)
+      }
+      [class$="-socialIcon"] {
+        height:50px;
+        width:50px;
+      }
     }
+    
     // .css-16otjo6-scrollingBox {
     //   height: auto !important;
     // }

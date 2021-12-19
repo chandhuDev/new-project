@@ -59,7 +59,7 @@ export const styles = {
       text-align:center;
   `,
   ccHeader:css`
-    font-size:16px;
+    font-size:14px;
     color:#2858c6;
     font-weight:700;
   `,

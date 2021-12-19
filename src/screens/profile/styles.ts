@@ -111,7 +111,6 @@ export const styles = {
     flex-wrap: wrap;
     margin-right: 15px;
     margin-left: 15px;
-
   `,
   socialItem:css`
     width:25%;
@@ -219,7 +218,6 @@ color:white;
     overflow: auto;
     // height: calc(100vh - 320px);
     height: calc(100vh - 335px);
-    padding-bottom: 50px;
   `,
   saveButton: css`
   font-size: 14px;
