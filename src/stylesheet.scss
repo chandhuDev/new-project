@@ -61,6 +61,13 @@
       padding-bottom:50px;
     }
   }
+  [class$="-bioValue"] {
+    &::before {
+      content: "\A";
+      white-space: pre;
+    }
+    white-space: break-spaces;
+  }
   @media only screen and (max-width: 1024px) {
     .mobbg-container {
       [class$="-scrollingBox"] {
