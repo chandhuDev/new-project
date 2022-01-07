@@ -1,3 +1,34 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  body {
+    background: #005acf;
+    position: relative;
+    &::before { 
+      content: "";
+      position: absolute;
+      bottom: -50px;
+      left: 25%;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: rgba($color: #FFF, $alpha: 0.6);
+    }
+    &::after { 
+      content: "";
+      position: absolute;
+      top: 20px;
+      right: -50px;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: rgba($color: #FFF, $alpha: 0.6);
+    }
+  }
+}
 /* width */
 ::-webkit-scrollbar {
     width: 5px;
@@ -29,7 +60,7 @@
     text-decoration: none;
   }
   .mobbg-container {
-    width: 340px;
+    width: 320px;
     height: 600px;
     max-height: 560px;
     position: absolute;
@@ -39,7 +70,7 @@
     // height: 100vh;
     margin: auto;
     background-image: url(../src/images/mobile-iframe.png);
-    background-size: 340px 100%;
+    background-size: 320px 100%;
     background-repeat: no-repeat;   
     padding-top: 20px; 
     overflow: hidden;
@@ -56,15 +87,24 @@
   .mobbg-container {
     [class$="-scrollingBox"] {
       padding-bottom:50px;
+      height: 200px;
     }
     [class$="-socialBox"] {
       padding-bottom:50px;
     }
   }
+  [class$="-bioValue"] {
+    // &::before {
+    //   content: "\A";
+    //   white-space: pre;
+    // }
+
+    // white-space: break-spaces;
+  }
   @media only screen and (max-width: 1024px) {
     .mobbg-container {
       [class$="-scrollingBox"] {
-        height: 200px;
+        // height: 200px;
       //padding-bottom: 0;
       }
       [class$="-socialBox"] {

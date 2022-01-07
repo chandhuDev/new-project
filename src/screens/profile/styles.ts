@@ -47,6 +47,7 @@ export const styles = {
     border-radius:50%;
     // border:5px solid #fff;
     border:3px solid #fff;
+    object-fit: cover;
   `,
   headerContainer: css`
     display: flex;
@@ -181,7 +182,7 @@ export const styles = {
   // font-size:16px;
   font-size:18px;
   color: #2f3542;
-  font-weight: 500;
+  font-weight: 600;
   // margin-top: 5px;
   opacity: 0.95;
   margin-right: 5px;
@@ -198,7 +199,7 @@ export const styles = {
   line-height: 14px;
   color:rgba(35, 90, 203, 0.8);
   text-transform: capitalize;
-  max-width: 210px;
+  max-width: "85%";
   display:block;
   margin-top:10px;
   `,
