@@ -16,10 +16,12 @@ export const styles = {
       rgba(27, 156, 252, 1) 100%
     );
     overflow: hidden;
-    width: 90%;
-    height: 96%;
+    width: 88.5%;
+    height: 92%;
     margin: auto;
-    border-radius: 25px
+    position: relative;
+    left: 0;
+    // border-radius: 25px
   `,
 
   containerBilling: css`
