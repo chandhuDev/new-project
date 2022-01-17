@@ -117,6 +117,11 @@ html {
     }
   }
   @media only screen and (max-width: 767px) {
+    body {
+      &::before, &::after {
+        display: none;
+      }
+    }
     [class$="-container"]{
       height: auto !important;
     }
