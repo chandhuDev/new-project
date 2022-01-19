@@ -16,10 +16,9 @@ export const styles = {
       rgba(27, 156, 252, 1) 100%
     );
     overflow: hidden;
-    width: 88.5%;
+    width: 89%;
     height: 92%;
     margin: auto;
-    position: relative;
     left: 0;
     // border-radius: 25px
   `,
