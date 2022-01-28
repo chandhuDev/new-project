@@ -19,6 +19,15 @@
             "value": "application/pkcs7-mime"
           }
         ]
+      },
+      {
+        "source": "/.well-known/assetlinks",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
       }
     ],
     "appAssociation": "NONE"

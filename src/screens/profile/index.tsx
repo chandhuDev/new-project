@@ -30,9 +30,24 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
     // setID(location[3])
     // if(location[3] != undefined){
     //   getUser(location[3]);
-    setID(location[2])
+    //console.log('location>>>',location)
+    if(location[1]=='tap'){
+      setID(location[3])
+    }
+    else{
+      setID(location[2])
+    }
+    //setID(location[2])
     if(location[2] != undefined){
-      getUser(location[2]);
+
+      if(location[1]=='tap'){
+    //    setID(location[3])
+        getUser(location[3]);
+      }
+      else{
+        getUser(location[2]);
+      }
+     // getUser(location[2]);
 
     }
   }, [])
@@ -42,7 +57,7 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
       method:'GET',
     }).then((resp) => {
       setUser(resp)
-      console.log(resp)
+     // console.log(resp)
     })
     .catch((error) =>{ 
       setError(error.message)
