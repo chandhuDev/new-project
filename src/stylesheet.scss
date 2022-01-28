@@ -11,7 +11,7 @@ html {
       content: "";
       position: absolute;
       bottom: -50px;
-      left: 25%;
+      left: 5%;
       width: 250px;
       height: 250px;
       border-radius: 50%;
@@ -60,20 +60,24 @@ html {
     text-decoration: none;
   }
   .mobbg-container {
-    width: 320px;
-    height: 600px;
-    max-height: 560px;
+    // width: 320px;
+    // height: 600px;
+    // max-height: 560px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     // height: 100vh;
     margin: auto;
-    background-image: url(../src/images/mobile-iframe.png);
+    background-image: url(../src/images/mobile-iframe.jpg);
     background-size: 320px 100%;
     background-repeat: no-repeat;   
-    padding-top: 20px; 
+    padding-top: 32px; 
     overflow: hidden;
+    width: 320px;
+    height: 650px;
+    max-height: 100vh;
+    // height: 100%;
   }
   .form {
     overflow: auto;
@@ -113,6 +117,11 @@ html {
     }
   }
   @media only screen and (max-width: 767px) {
+    body {
+      &::before, &::after {
+        display: none;
+      }
+    }
     [class$="-container"]{
       height: auto !important;
     }
