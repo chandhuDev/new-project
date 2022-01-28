@@ -43,6 +43,7 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
       if(location[1]=='tap'){
     //    setID(location[3])
         getUser(location[3]);
+        getUserTapCount(location[3])
       }
       else{
         getUser(location[2]);
@@ -58,6 +59,20 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
     }).then((resp) => {
       setUser(resp)
      // console.log(resp)
+    })
+    .catch((error) =>{ 
+      setError(error.message)
+    })
+    .finally(() => setLoading(false))
+  }
+  const getUserTapCount = (id:string) =>{
+    setLoading(true)
+    apiRequest(`/users/get-user-tap-count/${id}`,{
+      method:'GET',
+    }).then((resp) => {
+     // setUser(resp)
+     // console.log(resp)
+     //console.log('resp>>>',resp)
     })
     .catch((error) =>{ 
       setError(error.message)
