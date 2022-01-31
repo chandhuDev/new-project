@@ -23,6 +23,7 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
   const [id,setID] = useState('')
   const [loading,setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [cardStatus, setUserCardStatus] = useState('1')
   
   // use shipping info for billing when checkbox checked
   useEffect(() => {
@@ -42,8 +43,37 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
 
       if(location[1]=='tap'){
     //    setID(location[3])
-        getUser(location[3]);
-        getUserTapCount(location[3])
+          apiRequest(`/users/check-block-card/${location[4]}`,{
+            method:'GET',
+          }).then((resp) => {
+            console.log('resp>>',resp.status)
+            if(resp.status==200){
+              getUser(location[3]);
+               getUserTapCount(location[3])
+               setUserCardStatus('1')
+            }
+            if(resp.status==410){
+              setUserCardStatus('2')
+            }
+            if(resp.status==400){
+              setUserCardStatus('3')
+            }
+            if(resp.status==500){
+              setUserCardStatus('3')
+            }
+          // setUser(resp)
+          // console.log(resp)
+          //console.log('resp>>>',resp)
+              // getUser(location[3]);
+              // getUserTapCount(location[3])
+          })
+          .catch((error) =>{ 
+            setError(error.message)
+          })
+          .finally(() => setLoading(false))
+
+        // getUser(location[3]);
+        // getUserTapCount(location[3])
       }
       else{
         getUser(location[2]);
@@ -234,7 +264,10 @@ const  raf_create_vcard=()=>{
   return (
     <div className="mobbg-container">
       <main css={[styles.container]} className="background-container">
-          <div css={[styles.headerBxContainer,{backgroundImage:`url(${user?.contacts?.coverUrl})`}]} >
+        {
+          cardStatus=='1'?
+          <>
+           <div css={[styles.headerBxContainer,{backgroundImage:`url(${user?.contacts?.coverUrl})`}]} >
             
             <img src={require('../../images/gradient.png')} alt="Gradient Image" css={styles.gradientBg} />
           </div>
@@ -433,6 +466,19 @@ const  raf_create_vcard=()=>{
             </div>
           </div>
         </section>
+          </>
+          :
+            cardStatus=='2'?
+            <div>Card is Blocked
+            </div>
+            :
+              cardStatus=='3'?
+              <div>TagId is Invalid or does not exist
+              </div>
+              :
+              null
+        }
+         
       </main>
     </div>
     );

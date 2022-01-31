@@ -140,6 +140,7 @@ export const styles = {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    border-radius:10px 10px 0 0; 
   `,
   bottonBg:css`
     width:100%;

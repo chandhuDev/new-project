@@ -19,7 +19,7 @@ export const App: FC = () => (
         <FinishScreen path="/payment/finish" />
         {/* <ProfileScreen path="/profile/:profile/:id" /> */}
         <ProfileScreen path="/:profile/:id" />
-        <ProfileScreen path="/:tap/:profile/:id" />
+        <ProfileScreen path="/:tap/:profile/:id/:tapId" />
         <Redirect from="*" to="/payment" noThrow />
         
       </Router>
