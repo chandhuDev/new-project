@@ -46,7 +46,7 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
           apiRequest(`/users/check-block-card/${location[4]}`,{
             method:'GET',
           }).then((resp) => {
-            console.log('resp>>',resp.status)
+           // console.log('resp>>',resp.status)
             if(resp.status==200){
               getUser(location[3]);
                getUserTapCount(location[3])
