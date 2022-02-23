@@ -2,7 +2,7 @@
   "scripts": {
     "start": "npx parcel serve -p 8080 src/index.html",
     "build": "npx parcel build --experimental-scope-hoisting src/index.html && cp -r ./.well-known ./dist",
-    "deploy": "npx firebase deploy --only hosting:onetaphello-landing",
+    "deploy": "npx firebase deploy --only hosting:onetaphello-landing-test",
     "check:format": "prettier --check './!(node_modules|dist)/**/*.{ts,tsx,js,jsx}'",
     "check:typescript": "tsc --noEmit -p .",
     "check:eslint": "eslint . --ext .ts,.tsx,.js,.jsx --fix",

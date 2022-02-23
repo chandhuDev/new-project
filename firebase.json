@@ -1,7 +1,8 @@
 {
+  
   "hosting": {
    
-    "target": "onetaphello-landing",
+    "target": "onetaphello-landing-test",
     "public": "dist",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
