@@ -122,7 +122,7 @@ export const styles = {
     display: flex;
     justify-content: center;
     // margin-bottom:15px;
-    margin-bottom:20px;
+    margin-bottom: 35px;
   `,
   socialIcon:css`
     height:45px;
