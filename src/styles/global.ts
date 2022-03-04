@@ -7,7 +7,7 @@ export const global = css`
     padding: 0;
 
     background-color: white;
-    overflow:hidden;
+    // overflow:hidden;
   }
 
   * {

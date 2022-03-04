@@ -15,9 +15,9 @@ export const styles = {
       rgba(24, 44, 97, 1) 0%,
       rgba(27, 156, 252, 1) 100%
     );
-    overflow: hidden;
+    // overflow: hidden;
     width: 89%;
-    height: 92%;
+    // height: 92%;
     margin: auto;
     left: 0;
     // border-radius: 25px
@@ -225,7 +225,7 @@ color:white;
   scrollingBox:css`
     overflow: auto;
     // height: calc(100vh - 320px);
-    height: calc(100vh - 335px);
+    // height: calc(100vh - 335px);
   `,
   saveButton: css`
   font-size: 14px;
