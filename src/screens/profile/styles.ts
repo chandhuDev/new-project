@@ -15,7 +15,7 @@ export const styles = {
     //   rgba(24, 44, 97, 1) 0%,
     //   rgba(27, 156, 252, 1) 100%
     // );
-    background: #E5E5E5;
+    background: #f3f8ff;
     // overflow: hidden;
     width: 100%;
     // height: 92%;
@@ -68,8 +68,8 @@ export const styles = {
     margin-top:-35px;
   `,
   countContainerBx:css`
-      // width:28%;
-      text-align:center;
+      width: 45%;
+      text-align: center;
   `,
   ccHeader:css`
     font-size:16px;

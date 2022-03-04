@@ -5,28 +5,20 @@
 }
 html {
   body {
-    background: #E5E5E5;
+    background: #f3f8ff;
     position: relative;
-    // &::before { 
-    //   content: "";
-    //   position: absolute;
-    //   bottom: -50px;
-    //   left: 5%;
-    //   width: 250px;
-    //   height: 250px;
-    //   border-radius: 50%;
-    //   background: rgba($color: #FFF, $alpha: 0.6);
-    // }
-    // &::after { 
-    //   content: "";
-    //   position: absolute;
-    //   top: 20px;
-    //   right: -50px;
-    //   width: 250px;
-    //   height: 250px;
-    //   border-radius: 50%;
-    //   background: rgba($color: #FFF, $alpha: 0.6);
-    // }
+    &::before { 
+      content: url(./images/body-before.png);
+      position: absolute;
+      top: 0;
+      right: 0,
+    }
+    &::after { 
+      content: url(./images/body-after.png);
+      position: absolute;
+      top: 50%;
+      left: 0,
+    }
   }
 }
 /* width */
@@ -165,9 +157,17 @@ html {
         .icon-area {
           .img-box {
             text-align: center;
+            width: 35px;
+            .icon {
+              width: 80%;
+              height: 100%;
+              // &.icon-mail {
+              //   margin-top: 5px;
+              // }
+            }
           }
           .text {
-            font-size: 14px;
+            font-size: 12px;
           }
         }
       }
