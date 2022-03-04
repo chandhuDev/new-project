@@ -5,6 +5,7 @@ import { Global } from '@emotion/core'
 import { PaymentScreen,ProfileScreen,FinishScreen } from './screens'
 import { global } from './styles'
 import { Spinner } from './components'
+import {  Route, Switch } from "react-router-dom";
 
 import './stylesheet.scss'
 
@@ -15,7 +16,11 @@ export const App: FC = () => (
     <Suspense fallback={<Spinner />}>
       
       <Router>
-        <PaymentScreen path="/payment" />
+      
+        <PaymentScreen path="/" />
+       
+        {/* <Route exact path="/payment" component={PaymentScreen} /> */}
+
         <FinishScreen path="/payment/finish" />
         {/* <ProfileScreen path="/profile/:profile/:id" /> */}
         <ProfileScreen path="/:profile/:id" />
@@ -23,8 +28,8 @@ export const App: FC = () => (
         <Redirect from="*" to="/payment" noThrow />
         
       </Router>
-      {/* <Router path='/privacy-policy' component={() => { 
-     window.location.href = 'https://example.com/1234'; 
+      {/* <Route path='/' component={() => { 
+     window.location.href = 'https://onetaphello.com/'; 
      return null;
       }}/> */}
     </Suspense>

@@ -53,10 +53,12 @@ export const PaymentScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
 
   // use shipping info for billing when checkbox checked
   useEffect(() => {
-    if (hideBillingForm) {
-      setBillingFormData(shippingFormData)
-    }
-  }, [hideBillingForm, screen])
+    // if (hideBillingForm) {
+    //   setBillingFormData(shippingFormData)
+    // }
+    console.log('a')
+    window.location.href="https://onetaphello.com/"
+  }, )
 
   const purchase = async () => {
     try {
@@ -133,81 +135,11 @@ export const PaymentScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
 //  setScreen('thank-you')
 // }
   return (
+    // <>
+
+    // </>
     <div  className="mobbg-container">
-      <main css={[styles.container, screen === 'billing' && styles.containerBilling]}>
-        <section css={styles.content}>
-          
-          {
-            screen==='thank-you'?null: 
-            (<Header
-            Icon={screen === 'shipping' ? Truck : CreditCard}
-            title={screen === 'shipping' ? 'Order details' : 'Billing'}
-          />)
-          }
-          {/* <Header
-          //   Icon={screen === 'shipping' ? Truck : CreditCard}
-          //   title={screen === 'shipping' ? 'Order details' : 'Billing'}
-          // /> */}
-
-          <Separator />
-          {/* {
-            screen==='thank-you'?(
-              <ThankYou/>
-            ):null
-          } */}
-          {screen === 'shipping' ? (
-            <Form
-              type="shipping"
-              onSubmit={async (formData: PaymentFormData) => {
-                if (!token) {
-                  await store.createUserWithPhone(formData.phone)
-                  await store.fetchClientSecret()
-                }
-
-                setShippingFormData(formData)
-                setScreen('billing')
-              }}
-            //  renderPhoneInput={!token}
-            />
-          ) : 
-          screen==='thank-you'?
-          <ThankYou/>
-          :
-            (
-            <>
-              <Elements stripe={stripePromise}>
-                <CheckoutForm
-                  setPaymentData={store.setPaymentData}
-                  setCardFormFilled={setCardFormFilled}
-                  cardElementOptions={CARD_ELEMENT_OPTIONS}
-                  loading={!store.clientSecret}
-                  error={store.paymentError}
-                />
-              </Elements>
-
-              <Separator />
-
-              <Checkbox checked={hideBillingForm} onCheckChanged={setHideBillingForm} />
-
-              <Form
-                type="billing"
-                onClickGoBackButton={() => setScreen('shipping')}
-                showFields={!hideBillingForm}
-                defaultFormData={shippingFormData}
-                onSubmit={(formData: PaymentFormData) => {
-                  setShippingFormData(formData)
-
-                  purchase()
-                }}
-                submitButtonDisabled={!cardFormFilled || store.loading}
-                error={store.savingTransactionError}
-                renderPhoneInput={!token}
-                loading={loading}
-              />
-            </>
-          )}
-        </section>
-      </main>
+    
     </div>
   )
 })
