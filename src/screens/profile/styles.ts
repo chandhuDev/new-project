@@ -10,13 +10,14 @@ export const styles = {
     box-sizing: border-box;
     background: rgb(24, 44, 97);
     position:relative;
-    background: linear-gradient(
-      180deg,
-      rgba(24, 44, 97, 1) 0%,
-      rgba(27, 156, 252, 1) 100%
-    );
+    // background: linear-gradient(
+    //   180deg,
+    //   rgba(24, 44, 97, 1) 0%,
+    //   rgba(27, 156, 252, 1) 100%
+    // );
+    background: #E5E5E5;
     // overflow: hidden;
-    width: 89%;
+    width: 100%;
     // height: 92%;
     margin: auto;
     left: 0;
@@ -36,9 +37,8 @@ export const styles = {
     border-top-left-radius: 16px;
     z-index: 3;
     position: relative;
-    // width:95%;
-    width:93%;
-    margin:50px auto 0;
+    width: 95%;
+    margin: 0 auto;
   `,
   avatar: css`
     margin-Top: -50px;
@@ -68,7 +68,7 @@ export const styles = {
     margin-top:-35px;
   `,
   countContainerBx:css`
-      width:28%;
+      // width:28%;
       text-align:center;
   `,
   ccHeader:css`
@@ -112,13 +112,13 @@ export const styles = {
   `,
   socialBox:css`
     margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: 15px;
-    margin-left: 15px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    // margin-right: 15px;
+    // margin-left: 15px;
   `,
   socialItem:css`
-    width:25%;
+    // width:25%;
     display: flex;
     justify-content: center;
     // margin-bottom:15px;
@@ -134,13 +134,13 @@ export const styles = {
     position:absolute;
     top:0;
     left:0;
-    height:300px;
+    height: 195px;
     width:100%;
     z-index:0;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    border-radius:10px 10px 0 0; 
+    // border-radius:10px 10px 0 0; 
   `,
   bottonBg:css`
     width:100%;
@@ -175,15 +175,15 @@ export const styles = {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content:space-between;
+    justify-content: center;
   `,
   profileNameContainer:css`
   display: flex;
   `,
   nameValue:css`
   // font-size:16px;
-  font-size:18px;
-  color: #2f3542;
+  font-size: 24px;
+  color: #000;
   font-weight: 600;
   // margin-top: 5px;
   opacity: 0.95;
@@ -210,15 +210,18 @@ export const styles = {
     justify-content: space-between;
     align-items: flex-start;
     text-decoration: none;
-`,
-saveButton:css`
-text-decoration: none;
-background: #1E90FF;
-padding:8px 15px;
-border-radius:15px;
-text-decoration:none;
-color:white;
-`,
+  `,
+  saveButton:css`
+    text-decoration: none;
+    background: rgba(34, 90, 203, 1);
+    padding: 8px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+  `,
   triggerIcon:css`
     height: 20px;
   `,
@@ -226,14 +229,5 @@ color:white;
     overflow: auto;
     // height: calc(100vh - 320px);
     // height: calc(100vh - 335px);
-  `,
-  saveButton: css`
-  font-size: 14px;
-  padding: 5px 15px;
-  background: #005acf;
-  border-radius: 30px;
-  font-size: 14px;
-  color: white;
-  text-decoration: none;
   `
 }
