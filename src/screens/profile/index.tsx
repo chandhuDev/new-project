@@ -377,30 +377,79 @@ const  raf_create_vcard=()=>{
           </div>
 
           <div className="bs-profile-icons">
-            <a href="#" className="icon-area">
+            {/* <a href="#" className="icon-area">
               <div className="img-box">
                 <img src={require('../../images/icons/mail.png')} className="icon icon-mail" />
               </div>
               <p className="text mail">Mail</p>
-            </a>
-            <a href="#" className="icon-area">
+            </a> */}
+
+            {
+              CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+                  (item.key=='email')?
+                  // <div className="bs-profile-icons">
+                     <a href={'mailto:'+user!.contacts![item.key]} className="icon-area">
+                     <div className="img-box">
+                      <img src={require('../../images/icons/mail.png')} className="icon icon-mail" />
+                    </div>
+                    <p className="text mail">Mail</p>
+                    
+                    </a>
+                  // </div> 
+                  :null
+              ))
+            }    
+            {/* <a href="#" className="icon-area">
               <div className="img-box">
                 <img src={require('../../images/icons/message.png')} className="icon icon-message" />
               </div>
               <p className="text">Message</p>
-            </a>
-            <a href="#" className="icon-area">
+            </a> */}
+            {/* <a href="#" className="icon-area">
               <div className="img-box">
                 <img src={require('../../images/icons/call.png')} className="icon icon-call" />
               </div>
               <p className="text">Call</p>
-            </a>
-            <a href="#" className="icon-area">
+            </a> */}
+
+            {
+              CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+                  (item.key=='phone')?
+
+                  
+                    <a href={'tel:'+user!.contacts![item.key]} className="icon-area">
+                         <div className="img-box">
+                  
+                     <img src={require('../../images/icons/call.png')} className="icon icon-call" />
+                     </div>
+                     <p className="text">Call</p>
+                     </a>
+                  :null
+              ))
+            }
+            {/* <a href="#" className="icon-area">
               <div className="img-box">
                 <img src={require('../../images/icons/world.png')} className="icon icon-world" />
               </div>
               <p className="text">Website</p>
-            </a>
+            </a> */}
+
+
+            {
+              CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+                  (item.key=='website')?
+
+                  
+                    <a href='' onClick={() => window.open( 'http://'+user?.contacts?.[item.key])}  className="icon-area">
+                         <div className="img-box">
+                  
+                         <img src={require('../../images/icons/world.png')} className="icon icon-world" />
+                     </div>
+                     <p className="text">Website</p>
+                     </a>
+                  :null
+              ))
+            }
           </div>
 
           <div className="save-btn-area">
@@ -416,12 +465,30 @@ const  raf_create_vcard=()=>{
           <div>
             <div>
               <h3 className="sub-heads">About</h3>
-              <p className="sub-title">I am Cheif Business Officer in Chicago.</p>
+              {
+                 CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+                  (item.key=='bio')?<p className="sub-title">{user!.contacts![item.key]}</p> :null
+                ))
+              }
+              {/* <p className="sub-title">I am Cheif Business Officer in Chicago.</p> */}
             </div>
-
+            <div>
+              <h3 className="sub-heads">Company</h3>
+              {/* <p className="sub-title">Chicago, Illionis</p> */}
+              {
+                 CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+                  (item.key=='company')?<p className="sub-title">{user!.contacts![item.key]}</p> :null
+                ))
+              }
+            </div>
             <div>
               <h3 className="sub-heads">Location</h3>
-              <p className="sub-title">Chicago, Illionis</p>
+              {/* <p className="sub-title">Chicago, Illionis</p> */}
+              {
+                 CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+                  (item.key=='location')?<p className="sub-title">{user!.contacts![item.key]}</p> :null
+                ))
+              }
             </div>
           </div>
 
