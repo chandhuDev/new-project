@@ -6,7 +6,7 @@ export const styles = {
     overflow: hidden;
   `,
   container: css`
-    padding: 125px 0 0;
+    padding: 200px 0 0 0;
     box-sizing: border-box;
     background: rgb(24, 44, 97);
     position:relative;
@@ -134,7 +134,7 @@ export const styles = {
     position:absolute;
     top:0;
     left:0;
-    height: 195px;
+    height: 300px;
     width:100%;
     z-index:0;
     background-size: cover;
