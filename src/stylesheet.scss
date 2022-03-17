@@ -55,6 +55,9 @@ html {
     width: 600px;
     margin: auto;
     font-family: 'Open Sans';
+    .tap-view-container {
+      justify-content: space-evenly;
+    }
     .designation {
       color: rgba(34, 90, 203, 1);
       text-align: center;
@@ -153,6 +156,9 @@ html {
       height: 100%;
       max-height: 100%;
       padding-top: 0;
+      .tap-view-container {
+        justify-content: space-between;
+      }
       .bs-profile-icons {
         .icon-area {
           .img-box {
@@ -180,7 +186,7 @@ html {
         height: 100%;
       }
       [class$="-scrollingBox"] {
-        height: calc(100vh - 335px)
+        // height: calc(100vh - 335px)
       }
       [class$="-socialIcon"] {
         height: 40px;

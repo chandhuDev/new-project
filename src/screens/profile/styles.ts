@@ -68,7 +68,7 @@ export const styles = {
     margin-top:-35px;
   `,
   countContainerBx:css`
-      width: 45%;
+      // width: 45%;
       text-align: center;
   `,
   ccHeader:css`

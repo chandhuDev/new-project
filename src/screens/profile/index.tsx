@@ -277,7 +277,7 @@ const  raf_create_vcard=()=>{
             src={user?.contacts?.avatarUrl != '' ?user?.contacts?.avatarUrl:require('../../images/profile.jpg') }
             css={[styles.avatar]}
           />
-            <div css={styles.countContainer}>
+            <div css={styles.countContainer} className="tap-view-container">
               <div css={styles.countContainerBx}>
                 <label css={styles.ccHeader}>{user?.tapsCount}</label>
                 <label css={styles.ccValue}>Taps</label>
