@@ -391,6 +391,7 @@ const  raf_create_vcard=()=>{
                      <a href={'mailto:'+user!.contacts![item.key]} className="icon-area">
                      <div className="img-box">
                       <img src={require('../../images/icons/mail.png')} className="icon icon-mail" />
+                      {/* <i className='icon icon-mail'></i> */}
                     </div>
                     <p className="text mail">Mail</p>
                     
