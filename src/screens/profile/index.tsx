@@ -278,11 +278,11 @@ const  raf_create_vcard=()=>{
             css={[styles.avatar]}
           />
             <div css={styles.countContainer} className="tap-view-container">
-              <div css={styles.countContainerBx}>
+              <div css={styles.countContainerBx} className="box-area">
                 <label css={styles.ccHeader}>{user?.tapsCount}</label>
                 <label css={styles.ccValue}>Taps</label>
               </div>
-              <div css={styles.countContainerBx}>
+              <div css={styles.countContainerBx} className="box-area">
                 <label css={styles.ccHeader}>{user?.shareCount}</label>
                 <label css={styles.ccValue}>Views</label>
               </div>

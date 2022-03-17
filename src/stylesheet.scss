@@ -56,7 +56,10 @@ html {
     margin: auto;
     font-family: 'Open Sans';
     .tap-view-container {
-      justify-content: space-evenly;
+      justify-content: space-between;
+      .box-area {
+        width: 40%;
+      }
     }
     .designation {
       color: rgba(34, 90, 203, 1);
@@ -158,6 +161,9 @@ html {
       padding-top: 0;
       .tap-view-container {
         justify-content: space-between;
+        .box-area {
+          width: 35%;
+        }
       }
       .bs-profile-icons {
         .icon-area {
