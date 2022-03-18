@@ -88,7 +88,7 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
       method:'GET',
     }).then((resp) => {
       setUser(resp)
-     // console.log(resp)
+    //  console.log(resp)
     })
     .catch((error) =>{ 
       setError(error.message)
@@ -372,9 +372,18 @@ const  raf_create_vcard=()=>{
             ))
           } */}
           </div>
-          <div className="text-center">
+          {
+              CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
+                (item.key=='position')?
+                  // <label css={styles.nameValue}></label>
+                  <p className="designation">{' '}{user!.contacts![item.key]}</p>
+                  //:null
+                  :null
+              ))
+            }
+          {/* <div className="text-center">
               <p className="designation">Investor</p>
-          </div>
+          </div> */}
 
           <div className="bs-profile-icons">
             {/* <a href="#" className="icon-area">
