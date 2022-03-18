@@ -57,7 +57,7 @@ export const PaymentScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
     //   setBillingFormData(shippingFormData)
     // }
     //console.log('a')
-    window.location.href="https://dev.onetaphello.com/"
+    window.location.href="https://onetaphello.com/"
   }, )
 
   const purchase = async () => {
