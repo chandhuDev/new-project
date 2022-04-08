@@ -1,120 +1,117 @@
-import React, { FC, useState, useEffect, useMemo,ImageSourcePropType } from 'react'
+import React, { FC, useState, useEffect, useMemo, ImageSourcePropType } from 'react'
 import { RouteComponentProps } from '@reach/router'
 import { observer } from 'mobx-react'
 import { theme } from '~/styles'
 import { styles } from './styles'
 import { apiRequest } from '../../api-request'
 import { SerializedStyles } from '@emotion/core'
-import vcard from 'vcard-generator';
-import {Helmet} from "react-helmet";
-import MetaTags from 'react-meta-tags';
+import vcard from 'vcard-generator'
+import { Helmet } from 'react-helmet'
+import MetaTags from 'react-meta-tags'
 
 import { User } from '~/types'
-var vCardsJS = require('vcards-js');
+var vCardsJS = require('vcards-js')
 
 interface RouteComponentProps {
   text: string
   styles?: SerializedStyles
 }
 
-
 export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) => {
-  const [user,setUser] = useState<User | undefined>(undefined)
-  const [id,setID] = useState('')
-  const [loading,setLoading] = useState(false)
+  const [user, setUser] = useState<User | undefined>(undefined)
+  const [id, setID] = useState('')
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [cardStatus, setUserCardStatus] = useState('1')
-  
+
   // use shipping info for billing when checkbox checked
   useEffect(() => {
-    var location = window.location.pathname.split("/")
+    var location = window.location.pathname.split('/')
     // setID(location[3])
     // if(location[3] != undefined){
     //   getUser(location[3]);
     //console.log('location>>>',location)
-    if(location[1]=='tap'){
+    if (location[1] == 'tap') {
       setID(location[3])
-    }
-    else{
+    } else {
       setID(location[2])
     }
     //setID(location[2])
-    if(location[2] != undefined){
-
-      if(location[1]=='tap'){
-    //    setID(location[3])
-          apiRequest(`/users/check-block-card/${location[4]}`,{
-            method:'GET',
-          }).then((resp) => {
-           // console.log('resp>>',resp.status)
-            if(resp.status==200){
-              getUser(location[3]);
-               getUserTapCount(location[3])
-               setUserCardStatus('1')
+    if (location[2] != undefined) {
+      if (location[1] == 'tap') {
+        //    setID(location[3])
+        apiRequest(`/users/check-block-card/${location[4]}`, {
+          method: 'GET',
+        })
+          .then((resp) => {
+            // console.log('resp>>',resp.status)
+            if (resp.status == 200) {
+              getUser(location[3])
+              getUserTapCount(location[3])
+              setUserCardStatus('1')
             }
-            if(resp.status==410){
+            if (resp.status == 410) {
               setUserCardStatus('2')
             }
-            if(resp.status==400){
+            if (resp.status == 400) {
               setUserCardStatus('3')
             }
-            if(resp.status==500){
+            if (resp.status == 500) {
               setUserCardStatus('3')
             }
-          // setUser(resp)
-          // console.log(resp)
-          //console.log('resp>>>',resp)
-              // getUser(location[3]);
-              // getUserTapCount(location[3])
+            // setUser(resp)
+            // console.log(resp)
+            //console.log('resp>>>',resp)
+            // getUser(location[3]);
+            // getUserTapCount(location[3])
           })
-          .catch((error) =>{ 
+          .catch((error) => {
             setError(error.message)
           })
           .finally(() => setLoading(false))
 
         // getUser(location[3]);
         // getUserTapCount(location[3])
+      } else {
+        getUser(location[2])
       }
-      else{
-        getUser(location[2]);
-      }
-     // getUser(location[2]);
-
+      // getUser(location[2]);
     }
   }, [])
-  const getUser = (id:string) =>{
+  const getUser = (id: string) => {
     setLoading(true)
-    apiRequest(`/users/get-user-shared-profile/${id}`,{
-      method:'GET',
-    }).then((resp) => {
-      setUser(resp)
-    //  console.log(resp)
+    apiRequest(`/users/get-user-shared-profile/${id}`, {
+      method: 'GET',
     })
-    .catch((error) =>{ 
-      setError(error.message)
-    })
-    .finally(() => setLoading(false))
+      .then((resp) => {
+        setUser(resp)
+        console.log('response is >>', resp)
+      })
+      .catch((error) => {
+        setError(error.message)
+      })
+      .finally(() => setLoading(false))
   }
-  const getUserTapCount = (id:string) =>{
+  const getUserTapCount = (id: string) => {
     setLoading(true)
-    apiRequest(`/users/get-user-tap-count/${id}`,{
-      method:'GET',
-    }).then((resp) => {
-     // setUser(resp)
-     // console.log(resp)
-     //console.log('resp>>>',resp)
+    apiRequest(`/users/get-user-tap-count/${id}`, {
+      method: 'GET',
     })
-    .catch((error) =>{ 
-      setError(error.message)
-    })
-    .finally(() => setLoading(false))
+      .then((resp) => {
+        // setUser(resp)
+        // console.log(resp)
+        //console.log('resp>>>',resp)
+      })
+      .catch((error) => {
+        setError(error.message)
+      })
+      .finally(() => setLoading(false))
   }
 
   const CONTACT_ITEMS: Array<{
     key: keyof Required<User>['contacts']
     link?: boolean
   }> = [
-    
     { key: 'name' },
     { key: 'first_name' },
     { key: 'last_name' },
@@ -143,62 +140,76 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
     whatsapp: 'https://wa.me',
     appleMusic: 'https://music.apple.com',
     googlepay: 'https://pay.google.com?phone=',
-    phonepe:'upi://pay?pa=',
-    paytm:'paytmmp://',
-    freelancer:'https://www.freelancer.in/u/',
-    calendly:'https://calendly.com/',
+    phonepe: 'upi://pay?pa=',
+    paytm: 'paytmmp://',
+    freelancer: 'https://www.freelancer.in/u/',
+    calendly: 'https://calendly.com/',
   }
 
-   const IDENTITY_ICONS: Record<
-  keyof Required<User>['identities'],
-  ImageSourcePropType
-> = {
-  facebook: require('../../images/identities/facebook.png'),
-  instagram: require('../../images/identities/instagram.png'),
-  twitter: require('../../images/identities/twitter.png'),
-  telegram: require('../../images/identities/telegram.png'),
-  appleMusic: require('../../images/identities/apple_Music.png'),
-  linkedin: require('../../images/identities/linkedin.png'),
-  paypal: require('../../images/identities/paypal.png'),
-  pinterest: require('../../images/identities/pinterest.png'),
-  snapchat: require('../../images/identities/snapchat.png'),
-  spotify: require('../../images/identities/spotify.png'),
-  tiktok: require('../../images/identities/tiktok.png'),
-  twitch: require('../../images/identities/twitch.png'),
-  whatsapp: require('../../images/identities/whatsapp.png'),
-  youtube: require('../../images/identities/youtube.png'),
-  googlepay: require('../../images/identities/googlepay.png'),
-  paytm: require('../../images/identities/paytm.png'),
-  phonepe: require('../../images/identities/phonepe.png'),
-  freelancer: require('../../images/identities/freelancer.png'),
-  calendly:require('../../images/identities/calendly.png'),
-}
-const  raf_create_vcard=()=>{
-  //console.log('user>>>',user)
-  // var name = 'Daniel';
-  // var format_email = 'daniel@gmail.com';
-  // var format_tel = '02228178262';
- // var format_fax = '123456';
-  // var format_www = 'wwww.onetaphello.com';
-   // var format_address = '123456';
+  const IDENTITY_ICONS: Record<keyof Required<User>['identities'], ImageSourcePropType> =
+    {
+      facebook: require('../../images/identities/facebook.png'),
+      instagram: require('../../images/identities/instagram.png'),
+      twitter: require('../../images/identities/twitter.png'),
+      telegram: require('../../images/identities/telegram.png'),
+      appleMusic: require('../../images/identities/apple_Music.png'),
+      linkedin: require('../../images/identities/linkedin.png'),
+      paypal: require('../../images/identities/paypal.png'),
+      pinterest: require('../../images/identities/pinterest.png'),
+      snapchat: require('../../images/identities/snapchat.png'),
+      spotify: require('../../images/identities/spotify.png'),
+      tiktok: require('../../images/identities/tiktok.png'),
+      twitch: require('../../images/identities/twitch.png'),
+      whatsapp: require('../../images/identities/whatsapp.png'),
+      youtube: require('../../images/identities/youtube.png'),
+      googlepay: require('../../images/identities/googlepay.png'),
+      paytm: require('../../images/identities/paytm.png'),
+      phonepe: require('../../images/identities/phonepe.png'),
+      freelancer: require('../../images/identities/freelancer.png'),
+      calendly: require('../../images/identities/calendly.png'),
+    }
+  const raf_create_vcard = () => {
+    //console.log('user>>>',user)
+    // var name = 'Daniel';
+    // var format_email = 'daniel@gmail.com';
+    // var format_tel = '02228178262';
+    // var format_fax = '123456';
+    // var format_www = 'wwww.onetaphello.com';
+    // var format_address = '123456';
 
-   var name = user?.contacts.first_name + ' '+user?.contacts.last_name;
-   var email = user?.contacts.email//'daniel@gmail.com';
-  var phone = user?.contacts.phone;//'02228178262';//user?.contacts.phone;//'02228178262';
-  var website = user?.contacts.website;//'123456';
-  var company = user?.contacts.company;
-  var position = user?.contacts.position;
-  var location = user?.contacts.location;
-   
-    //return 'BEGIN%3AVCARD%0D%0AVERSION%3A4.0%0D%0AN%3A%3B'+name+'%3B%3B%3B%0D%0AFN%3A'+name+'%0D%0AEMAIL%3A'+format_email+'%0D%0AORG%3A'+name+'%0D%0ATEL%3A'+format_tel+'%0D%0ATEL%3Btype%3DFAX%3A'+format_fax+'%0D%0AURL%3Btype%3Dpref%3A'+format_www+'%0D%0AADR%3A%3B'+format_address+'%3B%3B%3B%3B%3BSpain%0D%0AEND%3AVCARD';   
-     return 'BEGIN%3AVCARD%0D%0AVERSION%3A4.0%0D%0AN%3A%3B'+name+'%3B%3B%3B%0D%0AFN%3A'+name+'%0D%0AEMAIL%3A'+email+'%0D%0AORG%3A'+company+'%0D%0ATEL%3A'+phone+'%0D%0AURL%3Btype%3Dpref%3A'+website+'%0D%0AADR%3A%3B'+location+'%0D%0AX-SOCIALPROFILE;TYPE=facebook:fb://page//swapnil.bhavekar%0D%0AX-SOCIALPROFILE;TYPE=twitter:https://twitter.com/shbhavekar%0D%0AX-SOCIALPROFILE;TYPE=instagram:https://instagram.com/bhavekarswapnil%0D%0AX-SOCIALPROFILE;TYPE=linkedin:https://linkedin.com/in/swapnil.bhavekar%0D%0AX-SOCIALPROFILE;TYPE=whatsapp:https://wa.me/9773950809%0D%0AX-SOCIALPROFILE;TYPE=telegram:https://t.me/SwapnilBhavekar%0D%0AX-SOCIALPROFILE;TYPE=calendly:https://calendly.com//swapnil.bhavekar%0D%0AEND%3AVCARD';   
-  
-    //return 'BEGIN%3AVCARD%0D%0AVERSION%3A4.0%0D%0AN%3A%3B'+name+'%0D%0AEMAIL%3A'+email+'%0D%0ATEL%3A'+phone+'URL'+website+'ORG'+company+'TITLE;CHARSET=UTF-8'+position+'%0D%0AADR%3A%3B'+location+'%3B%3B%3B%3B%3BSpain%0D%0AEND%3AVCARD';   
-    
+    var name = user?.contacts.first_name + ' ' + user?.contacts.last_name
+    var email = user?.contacts.email //'daniel@gmail.com';
+    var phone = user?.contacts.phone //'02228178262';//user?.contacts.phone;//'02228178262';
+    var website = user?.contacts.website //'123456';
+    var company = user?.contacts.company
+    var position = user?.contacts.position
+    var location = user?.contacts.location
+
+    //return 'BEGIN%3AVCARD%0D%0AVERSION%3A4.0%0D%0AN%3A%3B'+name+'%3B%3B%3B%0D%0AFN%3A'+name+'%0D%0AEMAIL%3A'+format_email+'%0D%0AORG%3A'+name+'%0D%0ATEL%3A'+format_tel+'%0D%0ATEL%3Btype%3DFAX%3A'+format_fax+'%0D%0AURL%3Btype%3Dpref%3A'+format_www+'%0D%0AADR%3A%3B'+format_address+'%3B%3B%3B%3B%3BSpain%0D%0AEND%3AVCARD';
+    return (
+      'BEGIN%3AVCARD%0D%0AVERSION%3A4.0%0D%0AN%3A%3B' +
+      name +
+      '%3B%3B%3B%0D%0AFN%3A' +
+      name +
+      '%0D%0AEMAIL%3A' +
+      email +
+      '%0D%0AORG%3A' +
+      company +
+      '%0D%0ATEL%3A' +
+      phone +
+      '%0D%0AURL%3Btype%3Dpref%3A' +
+      website +
+      '%0D%0AADR%3A%3B' +
+      location +
+      '%0D%0AX-SOCIALPROFILE;TYPE=facebook:fb://page//swapnil.bhavekar%0D%0AX-SOCIALPROFILE;TYPE=twitter:https://twitter.com/shbhavekar%0D%0AX-SOCIALPROFILE;TYPE=instagram:https://instagram.com/bhavekarswapnil%0D%0AX-SOCIALPROFILE;TYPE=linkedin:https://linkedin.com/in/swapnil.bhavekar%0D%0AX-SOCIALPROFILE;TYPE=whatsapp:https://wa.me/9773950809%0D%0AX-SOCIALPROFILE;TYPE=telegram:https://t.me/SwapnilBhavekar%0D%0AX-SOCIALPROFILE;TYPE=calendly:https://calendly.com//swapnil.bhavekar%0D%0AEND%3AVCARD'
+    )
+
+    //return 'BEGIN%3AVCARD%0D%0AVERSION%3A4.0%0D%0AN%3A%3B'+name+'%0D%0AEMAIL%3A'+email+'%0D%0ATEL%3A'+phone+'URL'+website+'ORG'+company+'TITLE;CHARSET=UTF-8'+position+'%0D%0AADR%3A%3B'+location+'%3B%3B%3B%3B%3BSpain%0D%0AEND%3AVCARD';
   }
-  const encode_utf8 = (s:string) => {
-    return unescape(encodeURIComponent(s));
+  const encode_utf8 = (s: string) => {
+    return unescape(encodeURIComponent(s))
   }
+
   const createVcard = () =>{
    
     
@@ -263,60 +274,73 @@ const  raf_create_vcard=()=>{
   }
   return (
     <div className="mobbg-container">
+      <Helmet>
+        <title>{user?.contacts?.first_name +" " + user?.contacts?.last_name}</title>
+        <meta property="og:image" content={user?.contacts?.coverUrl != '' || null ? user?.contacts?.coverUrl : ''}/>
+      </Helmet>
       <main css={[styles.container]} className="background-container">
-        {
-          cardStatus=='1'?
+        {cardStatus == '1' ? (
           <>
-           <div css={[styles.headerBxContainer,{backgroundImage:`url(${user?.contacts?.coverUrl})`}]} >
-            
-            {/* <img src={require('../../images/gradient.png')} alt="Gradient Image" css={styles.gradientBg} /> */}
-          </div>
-        <section css={styles.content}>
-          <div css={styles.headerContainer}>
-          <img
-            src={user?.contacts?.avatarUrl != '' ?user?.contacts?.avatarUrl:require('../../images/profile.jpg') }
-            css={[styles.avatar]}
-          />
-            <div css={styles.countContainer} className="tap-view-container">
-              <div css={styles.countContainerBx} className="box-area">
-                <label css={styles.ccHeader}>{user?.tapsCount}</label>
-                <label css={styles.ccValue}>Taps</label>
-              </div>
-              <div css={styles.countContainerBx} className="box-area">
-                <label css={styles.ccHeader}>{user?.shareCount}</label>
-                <label css={styles.ccValue}>Views</label>
-              </div>
+            <div
+              css={[
+                styles.headerBxContainer,
+                { backgroundImage: `url(${user?.contacts?.coverUrl})` },
+              ]}
+            >
+              {/* <img src={require('../../images/gradient.png')} alt="Gradient Image" css={styles.gradientBg} /> */}
             </div>
-          </div>
-          <div css={styles.profileNameHeader}>
-          <div css={styles.profileNameContent}>
-            <div css={styles.profileBx}>
-            {
-              CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
-                (item.key=='first_name')?
-                  <label css={styles.nameValue}>{user!.contacts![item.key]}</label>
-                  //:null
-                  :null
-              ))
-            }
-          
-            {
-              CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
-                (item.key=='last_name')?
-                  <label css={styles.nameValue}>{' '}{user!.contacts![item.key]}</label>
-                  //:null
-                  :null
-              ))
-            }
+            <section css={styles.content}>
+              <div css={styles.headerContainer}>
+                <img
+                  src={
+                    user?.contacts?.avatarUrl != ''
+                      ? user?.contacts?.avatarUrl
+                      : require('../../images/profile.jpg')
+                  }
+                  css={[styles.avatar]}
+                />
+                <div css={styles.countContainer} className="tap-view-container">
+                  <div css={styles.countContainerBx} className="box-area">
+                    <label css={styles.ccHeader}>{user?.tapsCount}</label>
+                    <label css={styles.ccValue}>Taps</label>
+                  </div>
+                  <div css={styles.countContainerBx} className="box-area">
+                    <label css={styles.ccHeader}>{user?.shareCount}</label>
+                    <label css={styles.ccValue}>Views</label>
+                  </div>
+                </div>
+              </div>
+              <div css={styles.profileNameHeader}>
+                <div css={styles.profileNameContent}>
+                  <div css={styles.profileBx}>
+                    {CONTACT_ITEMS.filter((item) =>
+                      Boolean(user?.contacts?.[item.key]),
+                    ).map((item) =>
+                      item.key == 'first_name' ? (
+                        <label css={styles.nameValue}>{user!.contacts![item.key]}</label>
+                      ) : //:null
+                      null,
+                    )}
 
-            {/* <a   css={styles.saveButton} href={'data:text/vcard;charset=UTF-8,' + createVcard()} download="contact.vcf">Save</a> */}
-              {
-                  user?.isVerified? <img css={styles.verifyIcon} src={require('../../images/correct-right.png')}/>:null
-              }
+                    {CONTACT_ITEMS.filter((item) =>
+                      Boolean(user?.contacts?.[item.key]),
+                    ).map((item) =>
+                      item.key == 'last_name' ? (
+                        <label css={styles.nameValue}> {user!.contacts![item.key]}</label>
+                      ) : //:null
+                      null,
+                    )}
 
-            </div>
-           
-          {/* {
+                    {/* <a   css={styles.saveButton} href={'data:text/vcard;charset=UTF-8,' + createVcard()} download="contact.vcf">Save</a> */}
+                    {user?.isVerified ? (
+                      <img
+                        css={styles.verifyIcon}
+                        src={require('../../images/correct-right.png')}
+                      />
+                    ) : null}
+                  </div>
+
+                  {/* {
               CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
                 (item.key=='phone')?
                 <div css={styles.infoItem}>
@@ -328,7 +352,7 @@ const  raf_create_vcard=()=>{
                 :null
             ))
           } */}
-          {/* {
+                  {/* {
             CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
                 (item.key=='email')?
                 <div css={styles.infoItem}>
@@ -339,7 +363,7 @@ const  raf_create_vcard=()=>{
                 </div> :null
             ))
           }         */}
-          {/* {
+                  {/* {
             CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
               (item.key=='first_name')?
               <div css={styles.infoItem}>
@@ -361,8 +385,8 @@ const  raf_create_vcard=()=>{
               )
             )
           } */}
-         
-          {/* {
+
+                  {/* {
             CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
                 (item.key!=='first_name' && item.key!=='last_name' && item.key!=='bio' && item.key!=='phone' && item.key!=='email')?
                 <div css={styles.infoItem}>
@@ -371,146 +395,167 @@ const  raf_create_vcard=()=>{
                 </div> :null
             ))
           } */}
-          </div>
-          {
-              CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
-                (item.key=='position')?
-                  // <label css={styles.nameValue}></label>
-                  <p className="designation">{' '}{user!.contacts![item.key]}</p>
-                  //:null
-                  :null
-              ))
-            }
-          {/* <div className="text-center">
+                </div>
+                {CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map(
+                  (item) =>
+                    item.key == 'position' ? (
+                      // <label css={styles.nameValue}></label>
+                      <p className="designation"> {user!.contacts![item.key]}</p>
+                    ) : //:null
+                    null,
+                )}
+                {/* <div className="text-center">
               <p className="designation">Investor</p>
           </div> */}
 
-          <div className="bs-profile-icons">
-            {/* <a href="#" className="icon-area">
+                <div className="bs-profile-icons">
+                  {/* <a href="#" className="icon-area">
               <div className="img-box">
                 <img src={require('../../images/icons/mail.png')} className="icon icon-mail" />
               </div>
               <p className="text mail">Mail</p>
             </a> */}
 
-            {
-              CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
-                  (item.key=='email')?
-                  // <div className="bs-profile-icons">
-                     <a href={'mailto:'+user!.contacts![item.key]} className="icon-area">
-                     <div className="img-box">
-                      <img src={require('../../images/icons/mail.png')} className="icon icon-mail" />
-                      {/* <i className='icon icon-mail'></i> */}
-                    </div>
-                    <p className="text mail">Mail</p>
-                    
-                    </a>
-                  // </div> 
-                  :null
-              ))
-            }    
-            {/* <a href="#" className="icon-area">
+                  {CONTACT_ITEMS.filter((item) =>
+                    Boolean(user?.contacts?.[item.key]),
+                  ).map((item) =>
+                    item.key == 'email' ? (
+                      // <div className="bs-profile-icons">
+                      <a
+                        href={'mailto:' + user!.contacts![item.key]}
+                        className="icon-area"
+                      >
+                        <div className="img-box">
+                          <img
+                            src={require('../../images/icons/mail.png')}
+                            className="icon icon-mail"
+                          />
+                          {/* <i className='icon icon-mail'></i> */}
+                        </div>
+                        <p className="text mail">Mail</p>
+                      </a>
+                    ) : // </div>
+                    null,
+                  )}
+                  {/* <a href="#" className="icon-area">
               <div className="img-box">
                 <img src={require('../../images/icons/message.png')} className="icon icon-message" />
               </div>
               <p className="text">Message</p>
             </a> */}
-            {/* <a href="#" className="icon-area">
+                  {/* <a href="#" className="icon-area">
               <div className="img-box">
                 <img src={require('../../images/icons/call.png')} className="icon icon-call" />
               </div>
               <p className="text">Call</p>
             </a> */}
 
-            {
-              CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
-                  (item.key=='phone')?
-
-                  
-                    <a href={'tel:'+user!.contacts![item.key]} className="icon-area">
-                         <div className="img-box">
-                  
-                     <img src={require('../../images/icons/call.png')} className="icon icon-call" />
-                     </div>
-                     <p className="text">Call</p>
-                     </a>
-                  :null
-              ))
-            }
-            {/* <a href="#" className="icon-area">
+                  {CONTACT_ITEMS.filter((item) =>
+                    Boolean(user?.contacts?.[item.key]),
+                  ).map((item) =>
+                    item.key == 'phone' ? (
+                      <a href={'tel:' + user!.contacts![item.key]} className="icon-area">
+                        <div className="img-box">
+                          <img
+                            src={require('../../images/icons/call.png')}
+                            className="icon icon-call"
+                          />
+                        </div>
+                        <p className="text">Call</p>
+                      </a>
+                    ) : null,
+                  )}
+                  {/* <a href="#" className="icon-area">
               <div className="img-box">
                 <img src={require('../../images/icons/world.png')} className="icon icon-world" />
               </div>
               <p className="text">Website</p>
             </a> */}
 
+                  {CONTACT_ITEMS.filter((item) =>
+                    Boolean(user?.contacts?.[item.key]),
+                  ).map((item) =>
+                    item.key == 'website' ? (
+                      <a
+                        href=""
+                        onClick={() =>
+                          window.open('http://' + user?.contacts?.[item.key])
+                        }
+                        className="icon-area"
+                      >
+                        <div className="img-box">
+                          <img
+                            src={require('../../images/icons/world.png')}
+                            className="icon icon-world"
+                          />
+                        </div>
+                        <p className="text">Website</p>
+                      </a>
+                    ) : null,
+                  )}
+                </div>
 
-            {
-              CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
-                  (item.key=='website')?
+                <div className="save-btn-area">
+                  {CONTACT_ITEMS.filter((item) =>
+                    Boolean(user?.contacts?.[item.key]),
+                  ).map((item) =>
+                    item.key == 'phone' ? (
+                      <a
+                        css={styles.saveButton}
+                        href={'data:text/vcard;charset=UTF-8,' + createVcard()}
+                        download="contact.vcf"
+                      >
+                        Save Contact
+                      </a>
+                    ) : null,
+                  )}
+                </div>
 
-                  
-                    <a href='' onClick={() => window.open( 'http://'+user?.contacts?.[item.key])}  className="icon-area">
-                         <div className="img-box">
-                  
-                         <img src={require('../../images/icons/world.png')} className="icon icon-world" />
-                     </div>
-                     <p className="text">Website</p>
-                     </a>
-                  :null
-              ))
-            }
-          </div>
+                <div>
+                  <div>
+                    <h3 className="sub-heads">About</h3>
+                    {CONTACT_ITEMS.filter((item) =>
+                      Boolean(user?.contacts?.[item.key]),
+                    ).map((item) =>
+                      item.key == 'bio' ? (
+                        <p className="sub-title">{user!.contacts![item.key]}</p>
+                      ) : null,
+                    )}
+                    {/* <p className="sub-title">I am Cheif Business Officer in Chicago.</p> */}
+                  </div>
+                  <div>
+                    <h3 className="sub-heads">Company</h3>
+                    {/* <p className="sub-title">Chicago, Illionis</p> */}
+                    {CONTACT_ITEMS.filter((item) =>
+                      Boolean(user?.contacts?.[item.key]),
+                    ).map((item) =>
+                      item.key == 'company' ? (
+                        <p className="sub-title">{user!.contacts![item.key]}</p>
+                      ) : null,
+                    )}
+                  </div>
+                  <div>
+                    <h3 className="sub-heads">Location</h3>
+                    {/* <p className="sub-title">Chicago, Illionis</p> */}
+                    {CONTACT_ITEMS.filter((item) =>
+                      Boolean(user?.contacts?.[item.key]),
+                    ).map((item) =>
+                      item.key == 'location' ? (
+                        <p className="sub-title">{user!.contacts![item.key]}</p>
+                      ) : null,
+                    )}
+                  </div>
+                </div>
 
-          <div className="save-btn-area">
-            {
-              CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
-                (item.key=='phone')?
-                <a   css={styles.saveButton} href={'data:text/vcard;charset=UTF-8,' + createVcard()} download="contact.vcf">Save Contact</a>
-                  :null
-              ))
-            }
-          </div>
-
-          <div>
-            <div>
-              <h3 className="sub-heads">About</h3>
-              {
-                 CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
-                  (item.key=='bio')?<p className="sub-title">{user!.contacts![item.key]}</p> :null
-                ))
-              }
-              {/* <p className="sub-title">I am Cheif Business Officer in Chicago.</p> */}
-            </div>
-            <div>
-              <h3 className="sub-heads">Company</h3>
-              {/* <p className="sub-title">Chicago, Illionis</p> */}
-              {
-                 CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
-                  (item.key=='company')?<p className="sub-title">{user!.contacts![item.key]}</p> :null
-                ))
-              }
-            </div>
-            <div>
-              <h3 className="sub-heads">Location</h3>
-              {/* <p className="sub-title">Chicago, Illionis</p> */}
-              {
-                 CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
-                  (item.key=='location')?<p className="sub-title">{user!.contacts![item.key]}</p> :null
-                ))
-              }
-            </div>
-          </div>
-
-          {/* {
+                {/* {
             CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
               (item.key=='bio')?<label css={styles.bioValue}>{user!.contacts![item.key]}</label>:null
             ))
           } */}
-          </div>
+              </div>
 
-          <div css={styles.scrollingBox}>
-            {/* <div css={styles.infoBox}>
+              <div css={styles.scrollingBox}>
+                {/* <div css={styles.infoBox}>
               {
                 CONTACT_ITEMS.filter((item) => Boolean(user?.contacts?.[item.key])).map((item) => (
                     (item.key=='phone')?
@@ -560,41 +605,28 @@ const  raf_create_vcard=()=>{
                 ))
               }
             </div> */}
-            <div css={styles.socialBox}>
-              {
-                Object.entries(user?.identities || {})
-                  .filter(([_, value]) => Boolean(value))
-                    .map(([type, value]) => (
-                      user?.hideIdentities[type] ? null : 
-                      <div css={styles.socialItem}>
-                        <a href={SOCIAL_LINKS[type]+'/'+value} target="_blank">
-                        <img
-                          src={IDENTITY_ICONS[type]}
-                          css={styles.socialIcon}
-                        />
-                        </a>
-                      </div>
-                    )
-                  )
-                }
-            </div>
-          </div>
-        </section>
-          </>
-          :
-            cardStatus=='2'?
-            <div>Card is Blocked
-            </div>
-            :
-              cardStatus=='3'?
-              <div>TagId is Invalid or does not exist
+                <div css={styles.socialBox}>
+                  {Object.entries(user?.identities || {})
+                    .filter(([_, value]) => Boolean(value))
+                    .map(([type, value]) =>
+                      user?.hideIdentities[type] ? null : (
+                        <div css={styles.socialItem}>
+                          <a href={SOCIAL_LINKS[type] + '/' + value} target="_blank">
+                            <img src={IDENTITY_ICONS[type]} css={styles.socialIcon} />
+                          </a>
+                        </div>
+                      ),
+                    )}
+                </div>
               </div>
-              :
-              null
-        }
-         
+            </section>
+          </>
+        ) : cardStatus == '2' ? (
+          <div>Card is Blocked</div>
+        ) : cardStatus == '3' ? (
+          <div>TagId is Invalid or does not exist</div>
+        ) : null}
       </main>
     </div>
-    );
+  )
 })
-
