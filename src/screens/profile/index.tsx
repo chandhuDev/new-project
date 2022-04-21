@@ -476,6 +476,23 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
                     Boolean(user?.contacts?.[item.key]),
                   ).map((item) =>
                     item.key == 'website' ? (
+                      (user?.contacts?.[item.key]?.includes("https") || user?.contacts?.[item.key]?.includes("https") ? 
+                      <a
+                        href=""
+                        onClick={() =>
+                          window.open(user?.contacts?.[item.key])
+                        }
+                        className="icon-area"
+                      >
+                        <div className="img-box">
+                          <img
+                            src={require('../../images/icons/world.png')}
+                            className="icon icon-world"
+                          />
+                        </div>
+                        <p className="text">Website</p>
+                      </a>
+                      :
                       <a
                         href=""
                         onClick={() =>
@@ -491,6 +508,8 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
                         </div>
                         <p className="text">Website</p>
                       </a>
+                      )
+                      
                     ) : null,
                   )}
                 </div>
