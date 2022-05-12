@@ -10,8 +10,6 @@ import { Helmet } from 'react-helmet'
 import MetaTags from 'react-meta-tags'
 
 import { User } from '~/types'
-var vCardsJS = require('vcards-js')
-
 interface RouteComponentProps {
   text: string
   styles?: SerializedStyles
@@ -23,9 +21,17 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [cardStatus, setUserCardStatus] = useState('1')
+  const [os, setOS] = useState('')
 
   // use shipping info for billing when checkbox checked
   useEffect(() => {
+    var OSName = 'Unknown OS'
+    if (navigator.appVersion.indexOf('Win') != -1) OSName = 'Windows'
+    if (navigator.appVersion.indexOf('Mac') != -1) OSName = 'MacOS'
+    if (navigator.appVersion.indexOf('X11') != -1) OSName = 'UNIX'
+    if (navigator.appVersion.indexOf('Linux') != -1) OSName = 'Linux'
+    setOS(OSName)
+    console.log('OS name is >>', os)
     var location = window.location.pathname.split('/')
     // setID(location[3])
     // if(location[3] != undefined){
@@ -44,7 +50,7 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
           method: 'GET',
         })
           .then((resp) => {
-            // console.log('resp>>',resp.status)
+            console.log('resp>>',resp)
             if (resp.status == 200) {
               getUser(location[3])
               getUserTapCount(location[3])
@@ -210,74 +216,105 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
     return unescape(encodeURIComponent(s))
   }
 
-  const createVcard = () =>{
-   
-    
-    // //set properties
-    // vCard.firstName = encode_utf8(user?.contacts.first_name);
-    // vCard.lastName = encode_utf8(user?.contacts.last_name);
-    // vCard.organization = encode_utf8(user?.contacts.company);
-    // vCard.workPhone = encode_utf8(user?.contacts.phone);
-    // // vCard.birthday = new Date(1985, 0, 1);
-    // vCard.title = encode_utf8(user?.contacts.position);
-    // vCard.url =  encode_utf8(user?.contacts.website);
-    // vCard.version = encode_utf8('4.0'); //can also support 2.1 and 4.0, certain versions only support certain fields
-    
-    let arr:any = [];
-    Object.entries(user?.identities || {})
-    .filter(([_, value]) => Boolean(value))
-      .map(([type, value]) => (
-        user?.hideIdentities[type] ? null : 
-        arr.push({
-          type : type,
-          uri : SOCIAL_LINKS[type]+'/'+value
-        })
-      )
-    )
- 
+  var vCardsJS = require('../../../lib/vcards-js')
+  var vCard = vCardsJS()
+  const createVcard = () => {
+    if (os == 'MacOS') {
+      console.log('Here')
+      let arr: any = []
+      Object.entries(user?.identities || {})
+        .filter(([_, value]) => Boolean(value))
+        .map(([type, value]) =>
+          user?.hideIdentities[type]
+            ? null
+            : arr.push({
+                type: type,
+                uri: SOCIAL_LINKS[type] + '/' + value,
+              }),
+        )
 
-    const vcardContent = vcard.generate({
-      name: {
-        familyName: user?.contacts.last_name,
-        givenName: user?.contacts.first_name,
-        middleName: '',
-      },
-      works: [{
-        organization: user?.contacts.company,
-        title: user?.contacts.position,
-        role: user?.contacts.position,
-      }],
-      emails: [{
-        type: 'work',
-        text: user?.contacts.email,
-      }],
-      phones: [{
-        type : "phone",
-        text: user?.contacts.phone,
-      }],
-      addresses: [
-        {
-          type: 'home',
-          street : user?.contacts.location
-        }
-      ],
-      socialProfiles: [...arr],
-      // gender: {
-      //   sex: 'male',
-      // },
-    });
-    let str = vcardContent;
-    for (let index = 0; index < arr.length; index++) {
-      str =str.replace(`X-SOCIALPROFILE;PREF=${index+1}`,`X-SOCIALPROFILE;${arr[index].uri.replace("https://","www.")}`);
+      const vcardContent = vcard.generate({
+        name: {
+          familyName: user?.contacts.last_name,
+          givenName: user?.contacts.first_name,
+          middleName: '',
+        },
+        works: [
+          {
+            organization: user?.contacts.company,
+            title: user?.contacts.position,
+            role: user?.contacts.position,
+          },
+        ],
+        emails: [
+          {
+            type: 'work',
+            text: user?.contacts.email,
+          },
+        ],
+        phones: [
+          {
+            type: 'phone',
+            text: user?.contacts.phone,
+          },
+        ],
+        addresses: [
+          {
+            type: 'home',
+            street: user?.contacts.location,
+          },
+        ],
+        socialProfiles: [...arr],
+        // gender: {
+        //   sex: 'male',
+        // },
+      })
+      let str = vcardContent
+      for (let index = 0; index < arr.length; index++) {
+        str = str.replace(
+          `X-SOCIALPROFILE;PREF=${index + 1}`,
+          `X-SOCIALPROFILE;${arr[index].uri.replace('https://', 'www.')}`,
+        )
+      }
+      return encodeURIComponent(str)
+    } else {
+      console.log('There')
+      vCard.firstName = user?.contacts.first_name
+      vCard.middleName = ''
+      vCard.lastName = user?.contacts.last_name
+      vCard.organization = user?.contacts.company
+      vCard.title = user?.contacts.position
+      vCard.role = user?.contacts.position
+      vCard.workPhone = user?.contacts.phone
+      vCard.email = user?.contacts.email
+      vCard.addresses = user?.contacts.location
+
+      let arr: any = []
+      Object.entries(user?.identities || {})
+        .filter(([_, value]) => Boolean(value))
+        .map(([type, value]) =>
+          user?.hideIdentities[type]
+            ? null
+            : arr.push({
+                type: type,
+                uri: SOCIAL_LINKS[type] + '/' + value,
+                icon: IDENTITY_ICONS[type],
+              }),
+        )
+
+      var socialURI, socialTYPE, socialICONS
+      arr.map((element, i) => {
+        socialURI = element.uri
+        socialTYPE = element.type
+        socialICONS = element.icon
+
+        vCard.socialUrls[socialTYPE] = socialURI
+      })
+      return vCard.getFormattedString()
     }
-    return encodeURIComponent(str) 
   }
   return (
     <div className="mobbg-container">
-      <Helmet>
-        <title>{user?.contacts?.first_name +" " + user?.contacts?.last_name}</title>
-        <meta property="og:image" content={user?.contacts?.coverUrl != '' || null ? user?.contacts?.coverUrl : ''}/>
-      </Helmet>
       <main css={[styles.container]} className="background-container">
         {cardStatus == '1' ? (
           <>
@@ -476,23 +513,6 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
                     Boolean(user?.contacts?.[item.key]),
                   ).map((item) =>
                     item.key == 'website' ? (
-                      (user?.contacts?.[item.key]?.includes("https") || user?.contacts?.[item.key]?.includes("https") ? 
-                      <a
-                        href=""
-                        onClick={() =>
-                          window.open(user?.contacts?.[item.key])
-                        }
-                        className="icon-area"
-                      >
-                        <div className="img-box">
-                          <img
-                            src={require('../../images/icons/world.png')}
-                            className="icon icon-world"
-                          />
-                        </div>
-                        <p className="text">Website</p>
-                      </a>
-                      :
                       <a
                         href=""
                         onClick={() =>
@@ -508,8 +528,6 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
                         </div>
                         <p className="text">Website</p>
                       </a>
-                      )
-                      
                     ) : null,
                   )}
                 </div>
@@ -629,7 +647,6 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
                     .filter(([_, value]) => Boolean(value))
                     .map(([type, value]) =>
                       user?.hideIdentities[type] ? null : (
-                        type=='phonepe' ? '':
                         <div css={styles.socialItem}>
                           <a href={SOCIAL_LINKS[type] + '/' + value} target="_blank">
                             <img src={IDENTITY_ICONS[type]} css={styles.socialIcon} />
