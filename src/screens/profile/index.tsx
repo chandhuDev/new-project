@@ -647,6 +647,7 @@ export const ProfileScreen: FC<RouteComponentProps> = observer(({ navigate }) =>
                     .filter(([_, value]) => Boolean(value))
                     .map(([type, value]) =>
                       user?.hideIdentities[type] ? null : (
+                        type=='phonepe' ? '':
                         <div css={styles.socialItem}>
                           <a href={SOCIAL_LINKS[type] + '/' + value} target="_blank">
                             <img src={IDENTITY_ICONS[type]} css={styles.socialIcon} />
