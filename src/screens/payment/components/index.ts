@@ -1,8 +1,0 @@
-export { Header } from './header'
-export { Button } from './button'
-export { Separator } from './separator'
-export { Form } from './form'
-export { FormItem } from './form-item'
-export { CheckoutForm } from './checkout-form'
-export { Checkbox } from './checkbox'
-export { ThankYou } from './thank-you'

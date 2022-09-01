@@ -1,6 +1,0 @@
-<FilesMatch "apple-app-site-association">
-    ForceType application/json
-</FilesMatch>
-<FilesMatch "apple-app-site-association">
-    ForceType application/pkcs7-mime
-</FilesMatch

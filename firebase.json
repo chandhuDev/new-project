@@ -1,36 +1,21 @@
 {
-  
   "hosting": {
-    "target": "onetaphello-landing",
-    "public": "dist",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "target": "onetaphello-landing-test",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
     "rewrites": [
       {
         "source": "**",
-        "destination": "/index.html"
+        "function": "nextServer2"
       }
-    ],
-    "headers": [
-      {
-        "source": "/.well-known/apple-app-site-association",
-        "headers": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ]
-      },
-      {
-        "source": "/.well-known/assetlinks",
-        "headers": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ]
-      }
-    ],
-    "appAssociation": "NONE"
-
+    ]
+  },
+  "functions": {
+    "source": ".",
+    "runtime": "nodejs16"
   }
 }
