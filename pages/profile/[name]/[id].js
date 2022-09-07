@@ -278,9 +278,6 @@ const Profile = ({ user }) => {
                                 content={user?.contacts?.bio}
                             />
                             {/* <meta property='og' /> */}
-                            {
-                                console.log("description...........", user?.contacts?.bio)
-                            }
                             <meta
                                 property='og:site_name'
                                 content={user?.contacts?.first_name}
@@ -584,9 +581,6 @@ const Profile = ({ user }) => {
                                 // position
                                 content={user?.contacts?.bio}
                             />
-                            {
-                                console.log("description...........", user?.contacts?.bio)
-                            }
                             {/* <meta property='og' /> */}
                             <meta
                                 property='og:site_name'
@@ -921,7 +915,7 @@ export const getServerSideProps = async context => {
         .then(response => response.json())
         .then(json => {
             user = json
-            // console.log(user)
+            console.log("logginngggg................", user)
         })
 
     return {
