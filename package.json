@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build && cp -r ./.well-known",
+    "build": "next build",
     "start": "next start -p $PORT",
     "deploy": "npx firebase deploy --only functions:nextServer2,hosting:onetaphello-landing-test"
   },
